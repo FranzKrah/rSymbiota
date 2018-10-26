@@ -2,7 +2,10 @@ Package: rSymbiota
 Type: Package
 Title: R Interface to rSymbiota Portals
 Version: 1.0.0
-Author: Franz-Sebastian Krah
+Author@R: c(
+    person("Franz-Sebastian", "Krah", , "f.krah@mailbox.org", c("aut", "cre")),
+    person("McCabe", "Lindsie", role = "aut"))
+    )
 Maintainer: The package maintainer <f.krah@mailbox.org>
 Description: Interface to the Mycology Collections data Portal (MyCoPortal). Allows to query taxon distribution information from the MyCoPortal for North America. 
 License: GPL (>= 2)
