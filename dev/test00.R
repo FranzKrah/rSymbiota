@@ -16,9 +16,9 @@ thelephorales.dist <- mycoportal_hightax(taxon = "Thelephorales")
 x <- spec.dist
 plot_distmap(x = x, mapdatabase = "world")
 plot_recordstreemap(x = x, groupvar = "country", log = FALSE)
-plot_datamap(x = x, mapdatabase = "world")
-plot_datamap(x = x, mapdatabase = "world", index = "rich",
-             area = list(min_long = -10, max_long = 30, min_lat = 30, max_lat = 70))
+plot_datamap(x = x, mapdatabase = "state", index = "rec")
+# plot_datamap(x = x, mapdatabase = "world", index = "rec",
+             # area = list(min_long = -10, max_long = 30, min_lat = 30, max_lat = 70))
 
 details(x@records$Symbiota.ID[1])
 

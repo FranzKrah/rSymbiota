@@ -5,23 +5,23 @@
 portals <- function() {
   tab <- (
     '"Portal Name";"Database";"url";"collection_url"
-    "Consortium of North American Lichen Herbaria";"symblichens";"http://lichenportal.org/portal/index.php";
-    "Arctic Lichen Flora";"symblichens";"http://lichenportal.org/arctic/index.php";
-    "Consortium of North American Bryophyte Herbaria";"symbbryophytes";"http://bryophyteportal.org/portal/";
-    "Frullania Collaborative Research Network";"symbbryophytes";"http://bryophyteportal.org/frullania/";
-    "Macroalgal Consortium Herbarium Portal";"symbalgae";"http://macroalgae.org/portal/index.php";
+    "Consortium of North American Lichen Herbaria";"symblichens";"http://lichenportal.org/portal/index.php";"http://lichenportal.org/portal/collections/index.php"
+    "Arctic Lichen Flora";"symblichens";"http://lichenportal.org/arctic/index.php";"http://lichenportal.org/arctic/collections/index.php"
+    "Consortium of North American Bryophyte Herbaria";"symbbryophytes";"http://bryophyteportal.org/portal/";"http://bryophyteportal.org/portal/collections/index.php"
+    "Frullania Collaborative Research Network";"symbbryophytes";"http://bryophyteportal.org/frullania/";"http://bryophyteportal.org/frullania/collections/harvestparams.php?taxa=Frullania&reset=1"
+    "Macroalgal Consortium Herbarium Portal";"symbalgae";"http://macroalgae.org/portal/index.php";"http://macroalgae.org/portal/collections/index.php"
     "MyCoPortal";"symbmycology";"http://mycoportal.org/portal/index.php";"http://mycoportal.org/portal/collections/index.php"
     "Smithsonian Tropical Research Institute Portal (STRI)";"symbstri";"http://stricollections.org/portal/";
     "Aquatic Invasives";"symbaquatic";"http://greatlakesinvasives.org/portal/index.php";
-    "Consortium of Midwest Herbaria";"symbseinet";"http://midwestherbaria.org/portal/index.php";
-    "SEINet";"symbseinet";"http://swbiodiversity.org/seinet/index.php";
-    "Intermountain Region Herbaria Network (IRHN)";"symbseinet";"http://intermountainbiota.org/portal/index.php";
-    "SouthEast Regional Network of Expertise and Collections (SERNEC)";"symbseinet";"http://sernecportal.org/portal/";
-    "North American Network of Small Herbaria";"symbseinet";"http://nansh.org/portal/index.php";
-    "Northern Great Plains Herbaria";"symbseinet";"http://ngpherbaria.org/portal/index.php";
-    "Consortium of Northeastern Herbaria (CNH)";"symbcnh";"http://portal.neherbaria.org/portal/";
-    "Madrean Archipelago Biodiversity Assessment (MABA) - Flora";"symbseinet";"http://madrean.org/symbflora/projects/index.php?proj=74";
-    "Madrean Archipelago Biodiversity Assessment (MABA) - Fauna";"symbfauna";"http://madrean.org/symbfauna/projects/index.php";
+    "Consortium of Midwest Herbaria";"symbseinet";"http://midwestherbaria.org/portal/index.php";"http://midwestherbaria.org/portal/collections/index.php"
+    "SEINet";"symbseinet";"http://swbiodiversity.org/seinet/index.php";"http://swbiodiversity.org/seinet/collections/index.php"
+    "Intermountain Region Herbaria Network (IRHN)";"symbseinet";"http://intermountainbiota.org/portal/index.php";"http://intermountainbiota.org/portal/collections/index.php?catid=1"
+    "SouthEast Regional Network of Expertise and Collections (SERNEC)";"symbseinet";"http://sernecportal.org/portal/";"http://sernecportal.org/portal/collections/index.php"
+    "North American Network of Small Herbaria";"symbseinet";"http://nansh.org/portal/index.php";"http://nansh.org/portal/collections/index.php"
+    "Northern Great Plains Herbaria";"symbseinet";"http://ngpherbaria.org/portal/index.php";"http://ngpherbaria.org/portal/collections/index.php"
+    "Consortium of Northeastern Herbaria (CNH)";"symbcnh";"http://portal.neherbaria.org/portal/";"http://portal.neherbaria.org/portal/collections/index.php"
+    "Madrean Archipelago Biodiversity Assessment (MABA) - Flora";"symbseinet";"http://madrean.org/symbflora/projects/index.php?proj=74";"http://madrean.org/symbflora/collections/index.php"
+    "Madrean Archipelago Biodiversity Assessment (MABA) - Fauna";"symbfauna";"http://madrean.org/symbfauna/projects/index.php";"http://madrean.org/symbfauna/collections/index.php"
     "Herbario Virtual Austral Americano";"symbhvaa";"http://herbariovaa.org/";
     "CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae";"symbcotram";"http://cotram.org/";
     "InvertEBase Data Portal";"symbinvertebase";"http://invertebase.org/portal/index.php";
