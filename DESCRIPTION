@@ -1,6 +1,6 @@
 Package: rSymbiota
 Type: Package
-Title: R Interface to rSymbiota Portals
+Title: R Interface to Symbiota Portals
 Version: 1.0.0
 Author@R: c(
     person("Franz-Sebastian", "Krah", , "f.krah@mailbox.org", c("aut", "cre")),
@@ -12,7 +12,8 @@ License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
-Reference: A. N. Miller and S. T. Bates The Mycology Collections Portal (MyCoPortal) (2017) Cryptogamie Mycologie, 37:15-36.
+Reference: Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
+URL: http://symbiota.org/docs/
 Imports: RSelenium, httr, rworldmap, ggplot2, maps, rvest, XML, xml2, stringr, treemap, magick, Hmisc, crayon, dplyr, sf, mapview, sp, methods, RCurl, sys, knitr
 Collate:
     'details.R'
