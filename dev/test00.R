@@ -3,7 +3,7 @@ library(rMyCoPortal)
 ## Test of functions
 
 ## no results
-spec.dist <- mycoportal(taxon = "Biscogniauxia alnophila")
+spec.dist <- symbiota(taxon = "Biscogniauxia alnophila")
 ## results
 spec.dist <- mycoportal(taxon = "Amanita muscaria")
 ## Test for Family
@@ -33,9 +33,11 @@ library("stringr")
 library("rvest")
 library("xml2")
 library("ssh.utils")
+library(crayon)
 
 
-# taxon = "Amanita muscaria"
+# taxon = "Amanita muscaria
+taxon <- "Aedes aegypti"
 # country = "";
 # state = "";
 # county = "";
@@ -48,11 +50,11 @@ library("ssh.utils")
 # point_lat = ""; point_lon = ""; radius = "";
 # collector = ""; collector_num = ""; coll_date1 = ""; coll_date2 = "";
 # syns = TRUE;
-# verbose = TRUE
-# screenshot <- TRUE
-# port = 4445L
-# browserName = "chrome"
-# remoteServerAddr = "localhost"
+verbose = TRUE
+screenshot <- TRUE
+port = 4445L
+browserName = "chrome"
+remoteServerAddr = "localhost"
 # radius <- "50"
 # point_lat <- "42"
 # point_lon <- "-72"

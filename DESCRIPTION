@@ -1,6 +1,6 @@
-Package: rMyCoPortal
+Package: rSymbiota
 Type: Package
-Title: R Interface to the Mycology Collections data Portal (rMyCoPortal) 
+Title: R Interface to rSymbiota Portals
 Version: 1.0.0
 Author: Franz-Sebastian Krah
 Maintainer: The package maintainer <f.krah@mailbox.org>
@@ -10,7 +10,6 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
 Reference: A. N. Miller and S. T. Bates The Mycology Collections Portal (MyCoPortal) (2017) Cryptogamie Mycologie, 37:15-36.
-URL: http://mycoportal.org/portal/index.php
 Imports: RSelenium, httr, rworldmap, ggplot2, maps, rvest, XML, xml2, stringr, treemap, magick, Hmisc, crayon, dplyr, sf, mapview, sp, methods, RCurl, sys, knitr
 Collate:
     'details.R'
@@ -21,11 +20,13 @@ Collate:
     'plot_datamap.R'
     'plot_distmap.R'
     'plot_recordstreemap.R'
+    'portals.R'
     'read_mycoporta_csv.R'
     'records-class.R'
     'records.R'
     'remote_table.R'
     'retry.R'
     'start_stop_docker.R'
+    'symbiota.R'
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
