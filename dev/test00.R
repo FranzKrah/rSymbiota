@@ -3,7 +3,7 @@ library(rMyCoPortal)
 ## Test of functions
 
 ## no results
-spec.dist <- symbiota(taxon = "Biscogniauxia alnophila")
+spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
 ## results
 spec.dist <- mycoportal(taxon = "Amanita muscaria")
 ## Test for Family
@@ -58,4 +58,4 @@ remoteServerAddr = "localhost"
 # radius <- "50"
 # point_lat <- "42"
 # point_lon <- "-72"
-# collection <- "all"
+collection <- "all"

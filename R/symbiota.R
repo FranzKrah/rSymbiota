@@ -205,82 +205,110 @@ symbiota <- function(taxon = "Amanita muscaria",
   webElem$sendKeysToElement(list(taxon))
 
   ## Country
-  webElem <- dr$findElement('id', "country")
-  webElem$sendKeysToElement(list(country))
+  if(country != ""){
+    webElem <- dr$findElement('id', "country")
+    webElem$sendKeysToElement(list(country))
+  }
 
   ## State
-  webElem <- dr$findElement('id', "state")
-  webElem$sendKeysToElement(list(state))
+  if(state != ""){
+    webElem <- dr$findElement('id', "state")
+    webElem$sendKeysToElement(list(state))
+  }
 
   ## County
-  webElem <- dr$findElement('id', "county")
-  webElem$sendKeysToElement(list(county))
-
+  if(county != ""){
+    webElem <- dr$findElement('id', "county")
+    webElem$sendKeysToElement(list(county))
+  }
   ## Locality
-  webElem <- dr$findElement('id', "locality")
-  webElem$sendKeysToElement(list(locality))
+  if(locality != ""){
+    webElem <- dr$findElement('id', "locality")
+    webElem$sendKeysToElement(list(locality))
+  }
 
   ## Elevation lower border
-  webElem <- dr$findElement('id', "elevlow")
-  webElem$sendKeysToElement(list(elevation_from))
+  if(elevation_from != ""){
+    webElem <- dr$findElement('id', "elevlow")
+    webElem$sendKeysToElement(list(elevation_from))
+  }
 
   ## Elevation upper border
-  webElem <- dr$findElement('id', "elevhigh")
-  webElem$sendKeysToElement(list(elevation_to))
+  if(elevation_to != ""){
+    webElem <- dr$findElement('id', "elevhigh")
+    webElem$sendKeysToElement(list(elevation_to))
+  }
 
   ## Host (Plant species name)
-  webElem <- dr$findElement('id', "assochost")
-  webElem$sendKeysToElement(list(host))
-
+  if(host != ""){
+    webElem <- dr$findElement('id', "assochost")
+    webElem$sendKeysToElement(list(host))
+  }
 
   ##### Latitude and Longitude
   ## North latitude border
-  webElem <- dr$findElement('id', "upperlat")
-  webElem$sendKeysToElement(list(north_lat))
-
+  if(north_lat != ""){
+    webElem <- dr$findElement('id', "upperlat")
+    webElem$sendKeysToElement(list(north_lat))
+  }
   ## South latitude border
-  webElem <- dr$findElement('id', "bottomlat")
-  webElem$sendKeysToElement(list(south_lat))
-
+  if(south_lat != ""){
+    webElem <- dr$findElement('id', "bottomlat")
+    webElem$sendKeysToElement(list(south_lat))
+  }
   ## West longitude border
-  webElem <- dr$findElement('id', "leftlong")
-  webElem$sendKeysToElement(list(west_lon))
-
+  if(west_lon != ""){
+    webElem <- dr$findElement('id', "leftlong")
+    webElem$sendKeysToElement(list(west_lon))
+  }
   ## East longitude border
-  webElem <- dr$findElement('id', "rightlong")
-  webElem$sendKeysToElement(list(east_lon))
+  if(state != ""){
+    webElem <- dr$findElement('id', "rightlong")
+    webElem$sendKeysToElement(list(east_lon))
+  }
 
   ##### Point-Radius Search
   ## Latitude of point
-  webElem <- dr$findElement('id', "pointlat")
-  webElem$sendKeysToElement(list(point_lat))
+  if(point_lat != ""){
+    webElem <- dr$findElement('id', "pointlat")
+    webElem$sendKeysToElement(list(point_lat))
+  }
 
   ## Longitude of point
-  webElem <- dr$findElement('id', "pointlong")
-  webElem$sendKeysToElement(list(point_lon))
+  if(point_lon != ""){
+    webElem <- dr$findElement('id', "pointlong")
+    webElem$sendKeysToElement(list(point_lon))
+  }
 
   ## Radius in km
-  webElem <- dr$findElement('id', "radiustemp")
-  webElem$sendKeysToElement(list(radius))
-
+  if(radius != ""){
+    webElem <- dr$findElement('id', "radiustemp")
+    webElem$sendKeysToElement(list(radius))
+  }
 
   ##### Collector Criteria
   ## Collector name
-  webElem <- dr$findElement('id', "collector")
-  webElem$sendKeysToElement(list(collector))
+  if(collector != ""){
+    webElem <- dr$findElement('id', "collector")
+    webElem$sendKeysToElement(list(collector))
+  }
 
   ## Collector numbner
-  webElem <- dr$findElement('id', "collnum")
-  webElem$sendKeysToElement(list(collector_num))
-
+  if(collector_num != ""){
+    webElem <- dr$findElement('id', "collnum")
+    webElem$sendKeysToElement(list(collector_num))
+  }
   ## Date record was found (from)
-  webElem <- dr$findElement('id', "eventdate1")
-  webElem$sendKeysToElement(list(coll_date1))
+  if(coll_date1 != ""){
+    webElem <- dr$findElement('id', "eventdate1")
+    webElem$sendKeysToElement(list(coll_date1))
+  }
 
   ## Date record was found (to)
-  webElem <- dr$findElement('id', "eventdate2")
-  webElem$sendKeysToElement(list(coll_date2))
-
+  if(coll_date2 != ""){
+    webElem <- dr$findElement('id', "eventdate2")
+    webElem$sendKeysToElement(list(coll_date2))
+  }
 
 
   # Press Enter -----------------------------------------------------
