@@ -3,7 +3,12 @@ library(rMyCoPortal)
 ## Test of functions
 
 ## no results
+spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal")
 spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
+spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte")
+spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase")
+
+
 ## results
 spec.dist <- mycoportal(taxon = "Amanita muscaria")
 ## Test for Family

@@ -146,9 +146,11 @@ symbiota <- function(taxon = "Amanita muscaria",
 
   if(nrow(portal)>1){
     rownames(portal) <- NULL
-    cat("More than 1 portal found, please specify the number\n")
-    portal[,1, drop = FALSE]
-    ent <- readline(prompt="Please enter row number:")
+    cat(red("More than 1 portal found, please specify the number\n"))
+    print(portal[,1, drop = FALSE])
+    Sys.sleep(0.5)
+    cat("Please enter a row number:")
+    ent <- scan(file = "", what = "", nmax = 1)
     portal <- portal[ent,]
   }
 
