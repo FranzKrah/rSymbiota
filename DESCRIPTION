@@ -18,6 +18,8 @@ Imports: RSelenium, httr, rworldmap, ggplot2, maps, rvest, XML, xml2, stringr, t
 Collate:
     'details.R'
     'getCollections.R'
+    'is_onclick_next_page.R'
+    'is_table_button.R'
     'mycoportal.R'
     'mycoportal_hightax.R'
     'nr_pages.R'

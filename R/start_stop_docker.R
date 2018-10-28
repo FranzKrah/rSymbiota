@@ -8,7 +8,11 @@ start_docker <- function(verbose = TRUE, sleep = 2){
 
   cmd = "docker"
 
+  if(verbose){
+    out <- exec_wait(cmd, args = c("pull", "selenium/standalone-chrome"))
+  }else{
   out <- exec_internal(cmd, args = c("pull", "selenium/standalone-chrome"))
+  }
   if(out$status != 0)
     stop("Docker not available. Please start Docker app.")
 

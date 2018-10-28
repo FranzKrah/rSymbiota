@@ -141,12 +141,23 @@ symbiota <- function(taxon = "Amanita muscaria",
   symbiota.tab <- portals()
 
   inc <- unlist(apply(symbiota.tab, 2, grep, pattern = db))
-  portal <- symbiota.tab[inc, 4]
-  portal.name <- trimws(symbiota.tab[inc, 1])
+  inc <- unique(inc)
+  portal <- symbiota.tab[inc, ]
+
+  if(nrow(portal)>1){
+    rownames(portal) <- NULL
+    cat("More than 1 portal found, please specify the number\n")
+    portal[,1, drop = FALSE]
+    ent <- readline(prompt="Please enter row number:")
+    portal <- portal[ent,]
+  }
+
+  portal.url <- portal$collection_url
+  portal.name <- trimws(portal$Portal.Name)
 
   if(collection == "all"){ #usually it is convenient to query all collections
 
-    portal <- gsub("index.php", "harvestparams.php", portal)
+    portal <- gsub("index.php", "harvestparams.php", portal.url)
     dr$navigate(portal)
     Sys.sleep(wait+1)
 
@@ -185,21 +196,16 @@ symbiota <- function(taxon = "Amanita muscaria",
   ## Fill elements: user defined query input
 
   ## Checkbox: Show results in table view
-  # [insert special case for some portals, e.g., bryophyte or http://sernecportal.org;
-  #  here there is no checkbox for table but an extra button for that which direclty
-  #  initiates search]
+  # [test if wesite has a table button or a tick box for table view]
 
-  if(length(grep("bryophyte|sernecportal", portal.name))){
-    button <- dr$findElement('xpath', "//*[@id='harvestparams'']/div[2]/div[2]/button")
-    button$clickElement()
-  }else{
+  if(!is_table_button(dr)){
     button <- dr$findElement('xpath', "//*[@id='showtable']")
     button$clickElement()
   }
 
 
-
   ## Checkbox: Include Synonyms from Taxonomic Thesaurus
+  # [default is ticked]
   if(!syns){
     button <- dr$findElement('xpath', "//*[@id='harvestparams']/div[3]/span/input")
     button$clickElement()
@@ -321,8 +327,15 @@ symbiota <- function(taxon = "Amanita muscaria",
 
 
   # Press Enter -----------------------------------------------------
-  webElem$sendKeysToElement(list(key = "enter"))
-  Sys.sleep(wait+2)
+
+  if(is_table_button(dr)){
+    button <- dr$findElement('xpath', "//*[@id='harvestparams']/div[2]/div[2]/button")
+    button$clickElement()
+    Sys.sleep(wait+2)
+  }else{
+    webElem$sendKeysToElement(list(key = "enter"))
+    Sys.sleep(wait+2)
+  }
 
   if(screenshot)
     dr$screenshot(display = TRUE, useViewer = TRUE)

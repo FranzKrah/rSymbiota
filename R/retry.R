@@ -3,7 +3,17 @@
 
 # Helper function; retry if internet connection temporatliy fluctuates
 
+
+
 next_page_download <- function(z, remdriver, k) {
+
+  if(is_onclick_next_page(remdriver)){
+    to_2nd_page <- "//*[@id='tablediv']/div[1]/div[2]/a"
+    conseq_page <- "//*[@id='tablediv']/div[1]/div[2]/a[2]"
+  }else{
+    to_2nd_page <- "/html/body/div/div[2]/div[1]/div/a"
+    conseq_page <- "/html/body/div/div[2]/div[1]/div/a[2]"
+  }
 
   if(z == 0){
     cat("page ( 1 ) ...download ")
@@ -12,13 +22,13 @@ next_page_download <- function(z, remdriver, k) {
   }else{
     if(k == 0){
       if(z == 1){
-        webElem <-  remdriver$findElement("xpath", "//*[@id='tablediv']/div[1]/div[2]/a")
+        webElem <-  remdriver$findElement("xpath", to_2nd_page)
         cat("page (", z+1, ")")
         webElem$clickElement()
         Sys.sleep(3)
       }
       if(z > 1){
-        webElem <- remdriver$findElement("xpath", "//*[@id='tablediv']/div[1]/div[2]/a[2]")
+        webElem <- remdriver$findElement("xpath", conseq_page)
          cat("page (", z+1, ")")
         webElem$clickElement()
         Sys.sleep(3)

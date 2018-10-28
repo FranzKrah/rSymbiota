@@ -33,11 +33,12 @@ library("stringr")
 library("rvest")
 library("xml2")
 library("ssh.utils")
-library(crayon)
-
+library("crayon")
+library("sys")
 
 # taxon = "Amanita muscaria
 taxon <- "Aedes aegypti"
+taxon <- "Funaria hygrometrica"
 # country = "";
 # state = "";
 # county = "";
