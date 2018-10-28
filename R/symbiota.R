@@ -185,9 +185,18 @@ symbiota <- function(taxon = "Amanita muscaria",
   ## Fill elements: user defined query input
 
   ## Checkbox: Show results in table view
-  # [this has to be checked always, otherwise table download will not work]
-  button <- dr$findElement('xpath', "//*[@id='showtable']")
-  button$clickElement()
+  # [insert special case for some portals, e.g., bryophyte or http://sernecportal.org;
+  #  here there is no checkbox for table but an extra button for that which direclty
+  #  initiates search]
+
+  if(length(grep("bryophyte|sernecportal", portal.name))){
+    button <- dr$findElement('xpath', "//*[@id='harvestparams'']/div[2]/div[2]/button")
+    button$clickElement()
+  }else{
+    button <- dr$findElement('xpath', "//*[@id='showtable']")
+    button$clickElement()
+  }
+
 
 
   ## Checkbox: Include Synonyms from Taxonomic Thesaurus

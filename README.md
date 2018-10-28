@@ -1,8 +1,14 @@
-# The MyCoPortal
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# The Symbiota
 
-The Mycology Collections data Portal (MyCoPortal) is a database of fungal diversity with records mainly from North America. For more - and detailled - information, please visit http://mycoportal.org/portal/index.php.
+The Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data. 
+Very detailled information can be found under: http://symbiota.org/docs/.
 
-The rMyCoPortal R package is an interface to the content stored on the MyCoPoral website. It allows to download records from the database readily in R for further analysis. It further provides some basic plotting functions. Below I will show the basic usability and some further possibilites of using the data.
+The rSymbiota R package is an interface to the content stored within the Symbiota portals. It allows to download records from the databases readily in R for further analysis. It further provides some basic plotting functions. Below I will show the basic usability and some further possibilites of using the data.
 
 
 ## Requirements
@@ -13,33 +19,39 @@ Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS High Sierra 10.13.6
 
 
-## Install rMyCoPortal
+## Install rSymbiota
 ```{r setup, include=TRUE, eval=FALSE}
 
 install.packages("devtools")
-devtools::install_github("FranzKrah/rMyCoPortal")
+devtools::install_github("FranzKrah/rSymbiota")
 
 ```
 
 ### Docker
 
-Before we start using rMyCoPortal, we need to install docker (https://docs.docker.com/install/). Docker performs  virtualization, also known as "containerization". rMyCoPortal interally uses the R package RSelenium to create a Selenium Server from which the MyCoPortal website is addressed. 
-Docker needs to run before using the rMyCoPortal.
+Before we start using rSymbiota, we need to install docker (https://docs.docker.com/install/). Docker performs  virtualization, also known as "containerization". rSymbiota interally uses the R package RSelenium to create a Selenium Server from which the Symbiota data portal website is addressed. 
+Docker needs to run before using the rSymbiota package.
 
-## Download records for *Amanita muscaria*, the fly agaric
-
-
+## Load the package 
 ```{r example1, include=TRUE, eval=TRUE, echo=TRUE}
 ## Load library
-library("rMyCoPortal")
+library("rSymbiota")
+```
+
+## The portals
+Symbiota currently hosts ca. 40 portals on a diverse range of taxonomic groups and locations. To get an overview of available portals, see either function portals() or http://symbiota.org/docs/symbiota-introduction/active-symbiota-projects/.
+
+
+## Download records for *Amanita muscaria*, the fly agaric
+Amanita is a fungus and thus we will select the MyCoPortal:
+
+```{r example1, include=TRUE, eval=TRUE, echo=TRUE}
 
 ## Download records
-
-am.rec <- mycoportal(taxon = "Amanita muscaria") # please run again if server doesn't respond immediatelly
+am.rec <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
 am.rec
 
 ## The retrieved object stores a distribution table with 6570 records.
-
 head(am.rec@records)
 ```
 
