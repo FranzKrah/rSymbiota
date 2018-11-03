@@ -90,12 +90,35 @@ Interface to the web database MyCoPortal. Query records available by various use
 \examples{
 \dontrun{
 ## Download Amanita muscaria observations and plot visualize data
-am.dist <- mycoportal(taxon = "Amanita muscaria")
-plot_distmap(x = am.dist, mapdatabase = "world", interactive = FALSE)
-plot_distmap(x = am.dist, mapdatabase = "state", interactive = FALSE)
-plot_distmap(x = am.dist, mapdatabase = "world", interactive = TRUE)
-plot_datamap(x = am.dist, mapdatabase = "world")
-plot_recordstreemap(x = am.dist, log = FALSE)
+spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal")
+## Symbiota Collections of Arthropods Network
+spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
+## Consortium of North American Bryophyte Herbaria
+spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte")
+## Frullania Collaborative Research Network
+spec.dist <- symbiota(taxon = "Frullania kunzei", db = "frullania")
+## InvertEBase Data Portal
+spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase")
+## Consortium of North American Lichen Herbaria
+spec.dist <- symbiota(taxon = "Parmelia cunninghamii", db = "lichen")
+## Smithsonian Tropical Research Institute Portal
+spec.dist <- symbiota(taxon = "Atelopus zeteki", db = "STRI")
+## Aquatic Invasives
+spec.dist <- symbiota(taxon = "Nuphar lutea", db = "symbaquatic") ## error
+## Consortium of Midwest Herbaria
+spec.dist <- symbiota(taxon = "Hamamelis virginiana", db = "Midwest Herbaria")
+## Consortium of Midwest Herbaria
+spec.dist <- symbiota(taxon = "Sambucus cerulea", db = "SEINet")
+## Intermountain Region Herbaria Network (IRHN)
+spec.dist <- symbiota(taxon = "Carex microptera", db = "IRHN")
+
+
+
+plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE)
+plot_distmap(x = spec.dist, mapdatabase = "state", interactive = FALSE)
+plot_distmap(x = spec.dist, mapdatabase = "world", interactive = TRUE)
+plot_datamap(x = spec.dist, mapdatabase = "world")
+plot_recordstreemap(x = spec.dist, log = FALSE)
 }
 }
 \references{

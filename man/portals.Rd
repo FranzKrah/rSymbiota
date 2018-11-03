@@ -12,3 +12,6 @@ Portals available through the Symbiota
 \details{
 Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data
 }
+\author{
+Franz-Sebastian Krah
+}

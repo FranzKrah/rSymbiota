@@ -50,12 +50,35 @@
 #' @examples
 #' \dontrun{
 #' ## Download Amanita muscaria observations and plot visualize data
-#' am.dist <- mycoportal(taxon = "Amanita muscaria")
-#' plot_distmap(x = am.dist, mapdatabase = "world", interactive = FALSE)
-#' plot_distmap(x = am.dist, mapdatabase = "state", interactive = FALSE)
-#' plot_distmap(x = am.dist, mapdatabase = "world", interactive = TRUE)
-#' plot_datamap(x = am.dist, mapdatabase = "world")
-#' plot_recordstreemap(x = am.dist, log = FALSE)
+#' spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal")
+#' ## Symbiota Collections of Arthropods Network
+#' spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
+#' ## Consortium of North American Bryophyte Herbaria
+#' spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte")
+#' ## Frullania Collaborative Research Network
+#' spec.dist <- symbiota(taxon = "Frullania kunzei", db = "frullania")
+#' ## InvertEBase Data Portal
+#' spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase")
+#' ## Consortium of North American Lichen Herbaria
+#' spec.dist <- symbiota(taxon = "Parmelia cunninghamii", db = "lichen")
+#' ## Smithsonian Tropical Research Institute Portal
+#' spec.dist <- symbiota(taxon = "Atelopus zeteki", db = "STRI")
+#' ## Aquatic Invasives
+#' spec.dist <- symbiota(taxon = "Nuphar lutea", db = "symbaquatic") ## error
+#' ## Consortium of Midwest Herbaria
+#' spec.dist <- symbiota(taxon = "Hamamelis virginiana", db = "Midwest Herbaria")
+#' ## Consortium of Midwest Herbaria
+#' spec.dist <- symbiota(taxon = "Sambucus cerulea", db = "SEINet")
+#' ## Intermountain Region Herbaria Network (IRHN)
+#' spec.dist <- symbiota(taxon = "Carex microptera", db = "IRHN")
+#'
+#'
+#'
+#' plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE)
+#' plot_distmap(x = spec.dist, mapdatabase = "state", interactive = FALSE)
+#' plot_distmap(x = spec.dist, mapdatabase = "world", interactive = TRUE)
+#' plot_datamap(x = spec.dist, mapdatabase = "world")
+#' plot_recordstreemap(x = spec.dist, log = FALSE)
 #' }
 #' @export
 
@@ -138,32 +161,31 @@ symbiota <- function(taxon = "Amanita muscaria",
   ## Navigate to website
 
 
-  symbiota.tab <- portals()
+  ports <- portal(db)
 
-  inc <- unlist(apply(symbiota.tab, 2, grep, pattern = db))
-  inc <- unique(inc)
-  portal <- symbiota.tab[inc, ]
-
-  if(nrow(portal)>1){
-    rownames(portal) <- NULL
+  if(nrow(ports)>1){
+    rownames(ports) <- NULL
     cat(red("More than 1 portal found, please specify the number\n"))
-    print(portal[,1, drop = FALSE])
+    print(ports[,1, drop = FALSE])
     Sys.sleep(0.5)
     cat("Please enter a row number:")
     ent <- scan(file = "", what = "", nmax = 1)
-    portal <- portal[ent,]
+    ports <- ports[ent,]
   }
 
-  portal.url <- portal$collection_url
-  portal.name <- trimws(portal$Portal.Name)
+  portal.url <- ports$collection_url
+  portal.name <- trimws(ports$Portal.Name)
 
   if(collection == "all"){ #usually it is convenient to query all collections
 
-    portal <- gsub("index.php", "harvestparams.php", portal.url)
-    dr$navigate(portal)
+    portal.url <- gsub("index.php", "harvestparams.php", portal.url)
+    dr$navigate(portal.url)
     Sys.sleep(wait+1)
 
   }else{ ## however, user may want specific collections
+
+    # [needs to be checked for all]
+
     dr$navigate("http://mycoportal.org/portal/collections/index.php")
     Sys.sleep(wait+1)
 

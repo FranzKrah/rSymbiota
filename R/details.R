@@ -1,6 +1,6 @@
 #' Retrieve images and meta-data for a specific record (specimen)
+#' @param x an object of class "\code{mycodist}", see \link{mycoportal}
 #' @param Symbiota.ID, as found in output of \code{records}
-#' @param verbose logical
 #'
 #' @import magick rvest
 #'
@@ -9,7 +9,7 @@
 #' @examples
 #' \dontrun{
 #' # use function records to download records; then use one of the IDs:
-#' pic <- details(4531213)
+#' pic <- details(x, 4531213)
 #' # Look at one of the images in more detail
 #' print(image_read(pic$urls[1])) # a rather orangeish specimen
 #' par(mfrow = c(1,3))
@@ -21,11 +21,19 @@
 #' }
 #' @export
 
-details <- function(Symbiota.ID = 4531213){
+details <- function(x, Symbiota.ID = 19797638){
 
-  x <- read_html(paste0("http://mycoportal.org/portal/collections/individual/index.php?occid=",
-                        Symbiota.ID,
-                       "&clid=0"))
+  site <- portal(db = x@db)$collection_url
+
+  x <- gsub("index.php",
+       paste0("individual/index.php?occid=", Symbiota.ID, "&clid=0"),
+       site)
+
+  x <- read_html(x)
+
+  # x <- read_html(paste0("http://mycoportal.org/portal/collections/individual/index.php?occid=",
+  #                       Symbiota.ID,
+  #                      "&clid=0"))
 
   ## Extract meta-data
   lab <- html_nodes(x, "div div b") %>% html_text()
@@ -39,7 +47,7 @@ details <- function(Symbiota.ID = 4531213){
   res <- gsub("\r\n", "", res)
   res <- gsub("#", "", res)
   res <- gsub(" :", ":", res)
-  if(length(grep("ImagesOpen|CommentLogin", res))>0)
+  if(length(grep("ImagesOpen|CommentLogin|submittedNew", res))>0)
     res <- res[-grep("ImagesOpen|CommentLogin", res)]
   if(anyDuplicated(res))
     res <- res[!duplicated(res) ]
@@ -51,12 +59,13 @@ details <- function(Symbiota.ID = 4531213){
 
   ## Extract URLs
   x <- html_attr(html_nodes(x, "a"), "href")
-  urls <- x[grep("jpg|jpeg|png|tiff", x)]
-  urls[grep("imglib", urls)] <- paste0("http://mycoportal.org", urls[grep("imglib", urls)])
+  urls <- x[grep("jpg|jpeg|png|tiff|media", x)]
+  # urls[grep("imglib", urls)] <- paste0("http://mycoportal.org", urls[grep("imglib", urls)])
   if(anyDuplicated(urls))
     urls <- urls[!duplicated(urls)]
 
-  image_read(urls[1])
+  if(length(urls)>0)
+    print(image_read(urls[1]))
 
   return(list(meta = res, urls = urls))
 }
