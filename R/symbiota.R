@@ -1,6 +1,6 @@
 #' Retrieve records from the Symbiota portals
 #' @param taxon character string specifying the taxon name (e.g., species name, family name or higher taxon). To query higher taxa, e.g. on order level, I recommend using \code{\link{mycoportal_hightax}}
-#' @param db portal name, for an overview see \link{\code{portals}}
+#' @param db portal name, for an overview see \code{\link{portals}}
 #' @param country character string specifying country, e.g., "USA"
 #' @param state character string specifying state, e.g., "Massachusetts"
 #' @param county character string specifying county, e.g., "Worcester"
@@ -37,9 +37,13 @@
 #' \item{records}{A data.frame with the query records results}
 #' \item{db}{A character string specifying the database (currently only MyCoPortal)}
 #'
-#' @details Interface to the web database MyCoPortal. Query records available by various user specifications.
-#' @references \url{http://mycoportal.org/portal/index.php}
-#' @references A. N. Miller and S. T. Bates The Mycology Collections Portal (MyCoPortal) (2017) Cryptogamie Mycologie, 37:15-36.
+#' @details Interface to the web databases of the Symbiota portals.
+#' Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data.
+#' Currently ca. 40 portals are avaiable:
+#' Consortium of North American Lichen Herbaria, Arctic Lichen Flora, Consortium of North American Bryophyte Herbaria, Frullania Collaborative Research Network, Macroalgal Consortium Herbarium Portal, MyCoPortal, Smithsonian Tropical Research Institute Portal (STRI), Aquatic Invasives, Aquatic Invasives, Aquatic Invasives, Consortium of Midwest Herbaria, SEINet, Intermountain Region Herbaria Network (IRHN), SouthEast Regional Network of Expertise and Collections (SERNEC), North American Network of Small Herbaria, Northern Great Plains Herbaria, Consortium of Northeastern Herbaria (CNH), Madrean Archipelago Biodiversity Assessment (MABA), Madrean Archipelago Biodiversity Assessment (MABA) - Fauna, Herbario Virtual Austral Americano, CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae, InvertEBase Data Portal, Symbiota Collections of Arthropods Network (SCAN), Lepidoptera of North America Network (LepNet), Neotropical Entomology, Neotropical Flora, Monarch (California Academy of Sciences), The Lundell Plant Diversity Portal, Virtual Flora of Wisconsin, Red de Herbarios del Noroeste de México, University of Colorado Herbarium, The Open Herbarium, Consortium of Pacific Herbaria, Minnesota Biodiversity Atlas, Documenting Ethnobiology in Mexico and Central America, OpenZooMuseum, Mid-Atlantic Herbaria Consortium, Channel Islands Biodiversity Information System, Consortium of Small Vertebrate Collections (CSVColl), The University of New Hampshire Collection of Insects and Other Arthropods.
+#' For an overview and URLs see \code{\link{portals()}}
+#' @references \url{http://symbiota.org/docs/}
+#' @references Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
 #'
 #' @import RSelenium httr RCurl
 #' @importFrom XML htmlParse xpathApply xmlValue
@@ -71,7 +75,56 @@
 #' spec.dist <- symbiota(taxon = "Sambucus cerulea", db = "SEINet")
 #' ## Intermountain Region Herbaria Network (IRHN)
 #' spec.dist <- symbiota(taxon = "Carex microptera", db = "IRHN")
-#'
+#' ## SouthEast Regional Network of Expertise and Collections (SERNEC)
+#' spec.dist <- symbiota(taxon = "Diospyros virginiana", db = "SERNEC")
+#' ## North American Network of Small Herbaria
+#' spec.dist <- symbiota(taxon = "Ambrosia dumosa", db = "Small Herbaria")
+#' ## Northern Great Plains Herbaria
+#' spec.dist <- symbiota(taxon = "Parietaria pensylvanica", db = "Great Plains")
+#' ## Consortium of Northeastern Herbaria (CNH)
+#' spec.dist <- symbiota(taxon = "Lonicera morrowii", db = "symbcnh")
+#' ## Madrean Archipelago Biodiversity Assessment (MABA) - Flora
+#' spec.dist <- symbiota(taxon = "Anisacanthus thurberi", db = "symbflora")
+#' ## Madrean Archipelago Biodiversity Assessment (MABA) - Fauna
+#' spec.dist <- symbiota(taxon = "Ambystoma rosaceum", db = "symbfauna")
+#' ## Herbario Virtual Austral Americano
+#' spec.dist <- symbiota(taxon = "Calendula officinalis", db = "symbhvaa")
+#' ## CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae
+#' spec.dist <- symbiota(taxon = "Campomanesia eugenioides", db = "symbcotram")
+#' ## InvertEBase Data Portal
+#' spec.dist <- symbiota(taxon = "Birgus latro", db = "symbinvertebase")
+#' ## Lepidoptera of North America Network (LepNet)
+#' spec.dist <- symbiota(taxon = "Lepidopa californica", db = "LepNet")
+#' ## Neotropical Entomology
+#' spec.dist <- symbiota(taxon = "Physonota alutacea", db = "symbneotropentomology")
+#' ## Neotropical Flora
+#' spec.dist <- symbiota(taxon = "Macfadyena unguis-cati", db = "symbneotropplants")
+#' ## Monarch (California Academy of Sciences)
+#' spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch")
+#' ## The Lundell Plant Diversity Portal
+#' spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
+#' ## Virtual Flora of Wisconsin
+#' spec.dist <- symbiota(taxon = "Fragaria virginiana", db = "Wisconsin")
+#' ## Red de Herbarios del Noroeste de México
+#' spec.dist <- symbiota(taxon = "Perityle californica", db = "Red de Herbarios")
+#' ## University of Colorado Herbarium
+#' spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
+#' ## The Open Herbarium
+#' spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
+#' ## Consortium of Pacific Herbaria
+#' spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
+#' ## Documenting Ethnobiology in Mexico and Central America
+#' spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
+#' ## OpenZooMuseu
+#' spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
+#' ## Mid-Atlantic Herbaria Consortium
+#' spec.dist <- symbiota(taxon = "Viburnum dentatum", db = "midatlanticherbaria")
+#' ## Channel Islands Biodiversity Information System
+#' spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
+#' ## Consortium of Small Vertebrate Collections (CSVColl)
+#' spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
+#' ## The University of New Hampshire Collection of Insects and Other Arthropods
+#' spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 #'
 #'
 #' plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE)
@@ -84,34 +137,38 @@
 
 
 symbiota <- function(taxon = "Amanita muscaria",
-                       db = "SCAN",
-           country = "",
-           state = "",
-           county = "",
-           locality = "",
-           elevation_from = "",
-           elevation_to = "",
-           host = "",
-           taxon_type = 1,
-           collection = "all",
-           north_lat = "",
-           south_lat = "",
-           west_lon = "",
-           east_lon = "",
-           point_lat = "",
-           point_lon = "",
-           radius = "",
-           collector = "",
-           collector_num = "",
-           coll_date1 = "",
-           coll_date2 = "",
-           syns = TRUE,
-           verbose = TRUE,
-           screenshot = TRUE,
-           port = 4445L,
-           browserName = "chrome",
-           remoteServerAddr = "localhost",
-           wait = 2) {
+                     db = "SCAN",
+                     country = "",
+                     state = "",
+                     county = "",
+                     locality = "",
+                     elevation_from = "",
+                     elevation_to = "",
+                     host = "",
+                     taxon_type = 1,
+                     collection = "all",
+                     north_lat = "",
+                     south_lat = "",
+                     west_lon = "",
+                     east_lon = "",
+                     point_lat = "",
+                     point_lon = "",
+                     radius = "",
+                     collector = "",
+                     collector_num = "",
+                     coll_date1 = "",
+                     coll_date2 = "",
+                     syns = TRUE,
+                     verbose = TRUE,
+                     screenshot = TRUE,
+                     port = 4445L,
+                     browserName = "chrome",
+                     remoteServerAddr = "localhost",
+                     wait = 2) {
+
+
+  if(length(grep(db, "The Lundell Plant Diversity Portal"))>0)
+    stop("This portal is currently not supported!")
 
 
   # test internet conectivity
@@ -226,7 +283,6 @@ symbiota <- function(taxon = "Amanita muscaria",
     button <- dr$findElement('xpath', "//*[@id='showtable']")
     button$clickElement()
   }
-
 
   ## Checkbox: Include Synonyms from Taxonomic Thesaurus
   # [default is ticked]

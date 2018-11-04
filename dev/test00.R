@@ -18,7 +18,7 @@ spec.dist <- symbiota(taxon = "Parmelia cunninghamii", db = "lichen")
 ## Smithsonian Tropical Research Institute Portal
 spec.dist <- symbiota(taxon = "Atelopus zeteki", db = "STRI")
 ## Aquatic Invasives
-spec.dist <- symbiota(taxon = "Nuphar lutea", db = "symbaquatic") ## error
+spec.dist <- symbiota(taxon = "Morone americana", db = "symbaquatic")
 ## Consortium of Midwest Herbaria
 spec.dist <- symbiota(taxon = "Hamamelis virginiana", db = "Midwest Herbaria")
 ## Consortium of Midwest Herbaria
@@ -32,11 +32,49 @@ spec.dist <- symbiota(taxon = "Ambrosia dumosa", db = "Small Herbaria")
 ## Northern Great Plains Herbaria
 spec.dist <- symbiota(taxon = "Parietaria pensylvanica", db = "Great Plains")
 ## Consortium of Northeastern Herbaria (CNH)
-spec.dist <- symbiota(taxon = "Lonicera morrowii", db = "symbcnh") ## error
+spec.dist <- symbiota(taxon = "Lonicera morrowii", db = "symbcnh")
 ## Madrean Archipelago Biodiversity Assessment (MABA) - Flora
 spec.dist <- symbiota(taxon = "Anisacanthus thurberi", db = "symbflora")
 ## Madrean Archipelago Biodiversity Assessment (MABA) - Fauna
 spec.dist <- symbiota(taxon = "Ambystoma rosaceum", db = "symbfauna")
+## Herbario Virtual Austral Americano
+spec.dist <- symbiota(taxon = "Calendula officinalis", db = "symbhvaa")
+## CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae
+spec.dist <- symbiota(taxon = "Campomanesia eugenioides", db = "symbcotram")
+## InvertEBase Data Portal
+spec.dist <- symbiota(taxon = "Birgus latro", db = "symbinvertebase")
+## Lepidoptera of North America Network (LepNet)
+spec.dist <- symbiota(taxon = "Lepidopa californica", db = "LepNet")
+## Neotropical Entomology
+spec.dist <- symbiota(taxon = "Physonota alutacea", db = "symbneotropentomology")
+## Neotropical Flora
+spec.dist <- symbiota(taxon = "Macfadyena unguis-cati", db = "symbneotropplants")
+## Monarch (California Academy of Sciences)
+spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch")
+## The Lundell Plant Diversity Portal
+spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
+## Virtual Flora of Wisconsin
+spec.dist <- symbiota(taxon = "Fragaria virginiana", db = "Wisconsin")
+## Red de Herbarios del Noroeste de México
+spec.dist <- symbiota(taxon = "Perityle californica", db = "Red de Herbarios")
+## University of Colorado Herbarium
+spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
+## The Open Herbarium
+spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
+## Consortium of Pacific Herbaria
+spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
+## Documenting Ethnobiology in Mexico and Central America
+spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
+## OpenZooMuseu
+spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
+## Mid-Atlantic Herbaria Consortium
+spec.dist <- symbiota(taxon = "Viburnum dentatum", db = "midatlanticherbaria")
+## Channel Islands Biodiversity Information System
+spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
+## Consortium of Small Vertebrate Collections (CSVColl)
+spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
+## The University of New Hampshire Collection of Insects and Other Arthropods
+spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 
 
 x <- spec.dist

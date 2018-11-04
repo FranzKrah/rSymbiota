@@ -7,7 +7,7 @@ Author@R: c(
     person("McCabe", "Lindsie", role = "aut"))
     )
 Maintainer: The package maintainer <f.krah@mailbox.org>
-Description: Interface to the Mycology Collections data Portal (MyCoPortal). Allows to query taxon distribution information from the MyCoPortal for North America. 
+Description: Interface to the web databases of the Symbiota portals. Allows to query taxon distribution information from ca. 40 portals of plants, animals and fungi. 
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

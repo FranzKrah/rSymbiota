@@ -16,7 +16,7 @@ symbiota(taxon = "Amanita muscaria", db = "SCAN", country = "",
 \arguments{
 \item{taxon}{character string specifying the taxon name (e.g., species name, family name or higher taxon). To query higher taxa, e.g. on order level, I recommend using \code{\link{mycoportal_hightax}}}
 
-\item{db}{portal name, for an overview see \link{\code{portals}}}
+\item{db}{portal name, for an overview see \code{\link{portals}}}
 
 \item{country}{character string specifying country, e.g., "USA"}
 
@@ -85,7 +85,11 @@ x an object of class "\code{\link{records}}" with the following components:
 Retrieve records from the Symbiota portals
 }
 \details{
-Interface to the web database MyCoPortal. Query records available by various user specifications.
+Interface to the web databases of the Symbiota portals.
+Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data.
+Currently ca. 40 portals are avaiable:
+Consortium of North American Lichen Herbaria, Arctic Lichen Flora, Consortium of North American Bryophyte Herbaria, Frullania Collaborative Research Network, Macroalgal Consortium Herbarium Portal, MyCoPortal, Smithsonian Tropical Research Institute Portal (STRI), Aquatic Invasives, Aquatic Invasives, Aquatic Invasives, Consortium of Midwest Herbaria, SEINet, Intermountain Region Herbaria Network (IRHN), SouthEast Regional Network of Expertise and Collections (SERNEC), North American Network of Small Herbaria, Northern Great Plains Herbaria, Consortium of Northeastern Herbaria (CNH), Madrean Archipelago Biodiversity Assessment (MABA), Madrean Archipelago Biodiversity Assessment (MABA) - Fauna, Herbario Virtual Austral Americano, CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae, InvertEBase Data Portal, Symbiota Collections of Arthropods Network (SCAN), Lepidoptera of North America Network (LepNet), Neotropical Entomology, Neotropical Flora, Monarch (California Academy of Sciences), The Lundell Plant Diversity Portal, Virtual Flora of Wisconsin, Red de Herbarios del Noroeste de México, University of Colorado Herbarium, The Open Herbarium, Consortium of Pacific Herbaria, Minnesota Biodiversity Atlas, Documenting Ethnobiology in Mexico and Central America, OpenZooMuseum, Mid-Atlantic Herbaria Consortium, Channel Islands Biodiversity Information System, Consortium of Small Vertebrate Collections (CSVColl), The University of New Hampshire Collection of Insects and Other Arthropods.
+For an overview and URLs see \code{\link{portals()}}
 }
 \examples{
 \dontrun{
@@ -111,7 +115,56 @@ spec.dist <- symbiota(taxon = "Hamamelis virginiana", db = "Midwest Herbaria")
 spec.dist <- symbiota(taxon = "Sambucus cerulea", db = "SEINet")
 ## Intermountain Region Herbaria Network (IRHN)
 spec.dist <- symbiota(taxon = "Carex microptera", db = "IRHN")
-
+## SouthEast Regional Network of Expertise and Collections (SERNEC)
+spec.dist <- symbiota(taxon = "Diospyros virginiana", db = "SERNEC")
+## North American Network of Small Herbaria
+spec.dist <- symbiota(taxon = "Ambrosia dumosa", db = "Small Herbaria")
+## Northern Great Plains Herbaria
+spec.dist <- symbiota(taxon = "Parietaria pensylvanica", db = "Great Plains")
+## Consortium of Northeastern Herbaria (CNH)
+spec.dist <- symbiota(taxon = "Lonicera morrowii", db = "symbcnh")
+## Madrean Archipelago Biodiversity Assessment (MABA) - Flora
+spec.dist <- symbiota(taxon = "Anisacanthus thurberi", db = "symbflora")
+## Madrean Archipelago Biodiversity Assessment (MABA) - Fauna
+spec.dist <- symbiota(taxon = "Ambystoma rosaceum", db = "symbfauna")
+## Herbario Virtual Austral Americano
+spec.dist <- symbiota(taxon = "Calendula officinalis", db = "symbhvaa")
+## CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae
+spec.dist <- symbiota(taxon = "Campomanesia eugenioides", db = "symbcotram")
+## InvertEBase Data Portal
+spec.dist <- symbiota(taxon = "Birgus latro", db = "symbinvertebase")
+## Lepidoptera of North America Network (LepNet)
+spec.dist <- symbiota(taxon = "Lepidopa californica", db = "LepNet")
+## Neotropical Entomology
+spec.dist <- symbiota(taxon = "Physonota alutacea", db = "symbneotropentomology")
+## Neotropical Flora
+spec.dist <- symbiota(taxon = "Macfadyena unguis-cati", db = "symbneotropplants")
+## Monarch (California Academy of Sciences)
+spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch")
+## The Lundell Plant Diversity Portal
+spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
+## Virtual Flora of Wisconsin
+spec.dist <- symbiota(taxon = "Fragaria virginiana", db = "Wisconsin")
+## Red de Herbarios del Noroeste de México
+spec.dist <- symbiota(taxon = "Perityle californica", db = "Red de Herbarios")
+## University of Colorado Herbarium
+spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
+## The Open Herbarium
+spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
+## Consortium of Pacific Herbaria
+spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
+## Documenting Ethnobiology in Mexico and Central America
+spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
+## OpenZooMuseu
+spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
+## Mid-Atlantic Herbaria Consortium
+spec.dist <- symbiota(taxon = "Viburnum dentatum", db = "midatlanticherbaria")
+## Channel Islands Biodiversity Information System
+spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
+## Consortium of Small Vertebrate Collections (CSVColl)
+spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
+## The University of New Hampshire Collection of Insects and Other Arthropods
+spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 
 
 plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE)
@@ -122,9 +175,9 @@ plot_recordstreemap(x = spec.dist, log = FALSE)
 }
 }
 \references{
-\url{http://mycoportal.org/portal/index.php}
+\url{http://symbiota.org/docs/}
 
-A. N. Miller and S. T. Bates The Mycology Collections Portal (MyCoPortal) (2017) Cryptogamie Mycologie, 37:15-36.
+Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
 }
 \author{
 Franz-Sebastian Krah
