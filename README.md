@@ -127,7 +127,7 @@ plot_grid(p.mat, p.map, ncol = 2)
 
 ## Meta
 
-Please note that this project is released with a Contributor [Code of Conduct](https://github.com/FranzKrah/rMyCoPortal/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a Contributor [Code of Conduct](https://github.com/FranzKrah/rSymbiota_dev/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-Please [report](https://github.com/FranzKrah/rMyCoPortal/issues) any issues or bugs.
+Please [report](https://github.com/FranzKrah/rSymbiota_dev/issues) any issues or bugs.
  
