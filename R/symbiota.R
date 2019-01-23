@@ -177,14 +177,6 @@ symbiota <- function(taxon = "Amanita muscaria",
   if(!is.character(getURL("http://mycoportal.org/portal/index.php")))
     stop(" Database is not available : http://mycoportal.org/portal/index.php")
 
-  if(taxon_type == "4"){
-    cat(red("*mycoportal* may be unstable for higher taxon queries.","\n",
-            "If you encounter stabilitiy issues, try *mycoportal_hightax*"))
-
-    ent <- readline(prompt="Continue? [y/n]")
-    if(ent == "n")
-      stop("Aborted by user")
-  }
 
   if(missing(taxon))
     stop("At least a species name has to be specified")
@@ -192,10 +184,19 @@ symbiota <- function(taxon = "Amanita muscaria",
   if(length(grep("_", taxon))>0)
     taxon <- gsub("_", " ", taxon)
 
+  ## Test if Docker is running
+  out <- exec_internal("docker", args = c("ps", "-q"), error = FALSE)
+  if(out$status != 0)
+    stop("Docker not available. Please start Docker! https://www.docker.com")
+
+  ## Wait should not be smaller than 2 seconds
   wait <- ifelse(wait<=2, 2, wait)
 
   # Initialize session -----------------------------------------------------
-  start_docker(verbose = verbose)
+  if(verbose){
+    cat("Initialize server\n")
+  }
+  start_docker_try(verbose = ifelse(verbose >= 1, TRUE, FALSE), max_attempts = 5, wait = wait)
 
   ## Set up remote
   dr <- remoteDriver(remoteServerAddr = "localhost", port = port, browserName = browserName)

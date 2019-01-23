@@ -2,18 +2,28 @@
 ## ©Franz-Sebastian Krah, 10-19-2018              ##
 
 # Helper function; retry if internet connection temporatliy fluctuates
+start_docker_try <- function(max_attempts, verbose, wait){
 
+  for (j in seq_len(max_attempts)) {
 
+    out <- tryCatch(start_docker(verbose = verbose, wait = wait),
+                    message = function(n) {"Unstable"},
+                    warning = function(w) {"Unstable";},
+                    error = function(e) {"Unstable";}
+    )
+
+    if(out == 0){
+      return(out)
+    }
+    if(out == "Unstable"){
+      if(verbose & j == max_attempts)
+        cat(red("Server does not respond. Please check of Docker is running correctly."))
+      Sys.sleep(1)
+    }
+  }
+}
 
 next_page_download <- function(z, remdriver, k) {
-
-  if(is_onclick_next_page(remdriver)){
-    to_2nd_page <- "//*[@id='tablediv']/div[1]/div[2]/a"
-    conseq_page <- "//*[@id='tablediv']/div[1]/div[2]/a[2]"
-  }else{
-    to_2nd_page <- "/html/body/div/div[2]/div[1]/div/a"
-    conseq_page <- "/html/body/div/div[2]/div[1]/div/a[2]"
-  }
 
   if(z == 0){
     cat("page ( 1 ) ...download ")
@@ -22,13 +32,13 @@ next_page_download <- function(z, remdriver, k) {
   }else{
     if(k == 0){
       if(z == 1){
-        webElem <-  remdriver$findElement("xpath", to_2nd_page)
+        webElem <-  remdriver$findElement("xpath", "//*[@id='tablediv']/div[1]/div[2]/a")
         cat("page (", z+1, ")")
         webElem$clickElement()
         Sys.sleep(3)
       }
       if(z > 1){
-        webElem <- remdriver$findElement("xpath", conseq_page)
+        webElem <- remdriver$findElement("xpath", "//*[@id='tablediv']/div[1]/div[2]/a[2]")
          cat("page (", z+1, ")")
         webElem$clickElement()
         Sys.sleep(3)

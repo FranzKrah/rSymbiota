@@ -1,4 +1,4 @@
-#' Test if consecutive table page reached by onclick function or direct link
+# Test if consecutive table page reached by onclick function or direct link
 is_onclick_next_page <- function(remdriver){
 
   x <- remdriver$getPageSource()[[1]]

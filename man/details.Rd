@@ -4,11 +4,9 @@
 \alias{details}
 \title{Retrieve images and meta-data for a specific record (specimen)}
 \usage{
-details(x, Symbiota.ID = 19797638)
+details(Symbiota.ID = 4531213)
 }
 \arguments{
-\item{x}{an object of class "\code{mycodist}", see \link{mycoportal}}
-
 \item{Symbiota.ID, }{as found in output of \code{records}}
 }
 \description{
@@ -17,7 +15,7 @@ Retrieve images and meta-data for a specific record (specimen)
 \examples{
 \dontrun{
 # use function records to download records; then use one of the IDs:
-pic <- details(x, 4531213)
+pic <- details(4531213)
 # Look at one of the images in more detail
 print(image_read(pic$urls[1])) # a rather orangeish specimen
 par(mfrow = c(1,3))

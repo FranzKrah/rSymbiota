@@ -11,7 +11,7 @@ Description: Interface to the web databases of the Symbiota portals. Allows to q
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Reference: Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
 URL: http://symbiota.org/docs/
 Imports: RSelenium, httr, rworldmap, ggplot2, maps, rvest, XML, xml2, stringr, treemap, magick, Hmisc, crayon, dplyr, sf, mapview, sp, methods, RCurl, sys, knitr
@@ -20,8 +20,6 @@ Collate:
     'getCollections.R'
     'is_onclick_next_page.R'
     'is_table_button.R'
-    'mycoportal.R'
-    'mycoportal_hightax.R'
     'nr_pages.R'
     'plot_datamap.R'
     'plot_distmap.R'
