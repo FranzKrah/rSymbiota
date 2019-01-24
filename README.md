@@ -41,7 +41,12 @@ library("rSymbiota")
 ## The portals
 Symbiota currently hosts ca. 40 portals on a diverse range of taxonomic groups and locations. To get an overview of available portals, see either function portals() or http://symbiota.org/docs/symbiota-introduction/active-symbiota-projects/.
 
+See this vignette for a list of portals and code to interact with them. 
+[Vignette: Portals](http://htmlpreview.github.io/?https://github.com/FranzKrah/rSymbiota_dev/blob/master/vignettes/portals.html)
 
+
+
+# Basics
 ## Download records for *Amanita muscaria*, the fly agaric
 Amanita is a fungus and thus we will select the MyCoPortal:
 
