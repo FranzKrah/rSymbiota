@@ -22,6 +22,7 @@ plot_recordstreemap <- function(x, groupvar = "country", log = TRUE){
 
   ipt <- x@records
   ipt <- tolower(ipt[,grep(capitalize(groupvar), names(ipt))])
+  ipt$spec <- ipt$Species.Name
 
   if(groupvar == "country"){
     ipt <- gsub("united\\sstates|u\\.s\\.a\\.|usa of america|\\[usa\\]", "usa", ipt)

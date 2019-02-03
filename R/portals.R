@@ -45,7 +45,7 @@ portals <- function() {
     "Mid-Atlantic Herbaria Consortium";"";"http://midatlanticherbaria.org/portal/";"http://midatlanticherbaria.org/portal/collections/index.php"
     "Channel Islands Biodiversity Information System";"CAL-IBIS";"http://www.cal-ibis.org/";"http://www.cal-ibis.org/collections/index.php"
     "Consortium of Small Vertebrate Collections (CSVColl)";"?";"http://csvcoll.org/portal/index.php";"http://csvcoll.org/portal/collections/index.php"
-    "The University of New Hampshire Collection of Insects and Other Arthropods";"UNH server";"https://unhcollection.unh.edu/database/index.php"; "https://unhcollection.unh.edu/database/index.php"'
+    "The University of New Hampshire Collection of Insects and Other Arthropods";"UNH server";"https://unhcollection.unh.edu/database/collections/harvestparams.php"; "https://unhcollection.unh.edu/database/index.php"'
   )
   tab <- read.csv(text = tab, sep = ";")
   tab[] <- apply(tab, 2, as.character)

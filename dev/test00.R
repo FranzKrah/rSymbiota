@@ -60,7 +60,7 @@ spec.dist <- symbiota(taxon = "Perityle californica", db = "Red de Herbarios")
 ## University of Colorado Herbarium
 spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
 ## The Open Herbarium
-spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
+spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb")
 ## Consortium of Pacific Herbaria
 spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
 ## Documenting Ethnobiology in Mexico and Central America
@@ -124,3 +124,9 @@ remoteServerAddr = "localhost"
 # point_lat <- "42"
 # point_lon <- "-72"
 collection <- "all"
+
+taxon = "Bombus borealis"
+db = "UNH server"
+
+taxon = "Begonia hirtella"
+db = "Pacific"

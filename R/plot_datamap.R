@@ -24,6 +24,7 @@
 plot_datamap <- function(x, mapdatabase = "world", area = NULL, index = "rich", plot = TRUE){
 
   ipt <- x@records
+  ipt$spec <- ipt$Species.Name
 
   ## Initialize map
   if(!is.null(area)){

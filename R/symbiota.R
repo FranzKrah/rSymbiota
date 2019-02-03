@@ -236,7 +236,11 @@ symbiota <- function(taxon = "Amanita muscaria",
 
   if(collection == "all"){ #usually it is convenient to query all collections
 
-    portal.url <- gsub("index.php", "harvestparams.php", portal.url)
+    if(length(grep("unhcollection", portal.url))>0){
+      portal.url <- gsub("index.php", "collections/harvestparams.php", portal.url)
+    }else{
+      portal.url <- gsub("index.php", "harvestparams.php", portal.url)
+    }
     dr$navigate(portal.url)
     Sys.sleep(wait+1)
 
@@ -474,14 +478,12 @@ symbiota <- function(taxon = "Amanita muscaria",
 
   ## Add coordinates as lon lat column
   tabs$coord <- stringr::str_extract(tabs$Locality, "-?\\d*\\.\\d*\\s\\-?\\d*\\.\\d*")
+  if(!any(is.na(tabs$coord))){
   coords <- data.frame(do.call(rbind, strsplit(tabs$coord , " ")))
   names(coords) <- c("lat", "lon")
   coords <- suppressWarnings(apply(coords, 2, function(x) as.numeric(as.character(x))))
   tabs <- data.frame(tabs, coords)
-  spec <- tabs$Scientific.Name
-  spec <- gsub("\\([A-z]*\\)", "\\1", spec)
-  spec <- gsub("\\s+", " ", spec)
-  tabs$spec <- stringr::word(spec, 1,2)
+  }
 
   # Close Website and Server ------------------------------------------------
   cat(ifelse(verbose, "Close website and quit server\n", ""))

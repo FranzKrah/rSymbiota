@@ -43,6 +43,7 @@ plot_distmap <- function(x,
 
   if(!interactive){
   ipt <- x@records
+  ipt$spec <- ipt$Species.Name
 
   tomap <- ipt[complete.cases(ipt$lat, ipt$lon), ]
   tomap <- tomap[-(which(tomap$lat <=90 || tomap$lon <=180)), ]

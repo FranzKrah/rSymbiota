@@ -149,30 +149,24 @@ spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
 ## (32) Consortium of Small Vertebrate Collections (CSVColl)
 spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
 
+## (33) The Open Herbarium
+spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb")
 
+## (34) Documenting Ethnobiology in Mexico and Central America
+spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca")
+
+## (35) Consortium of Pacific Herbaria
+spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific")
+
+## (36) The University of New Hampshire Collection of Insects and Other Arthropods
+spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 ```
 
 
 ## Currently not supported
 ```{r not_supported, include = TRUE, eval= FALSE}
 
-## The Lundell Plant Diversity Portal
+## (37) The Lundell Plant Diversity Portal
 spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
-
-
-## The Open Herbarium
-spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
-
-
-## Consortium of Pacific Herbaria
-spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
-
-
-## Documenting Ethnobiology in Mexico and Central America
-spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
-
-
-## The University of New Hampshire Collection of Insects and Other Arthropods
-spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 
 ```

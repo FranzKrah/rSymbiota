@@ -14,11 +14,13 @@ nr_pages <- function(remdriver) {
   nr <- str_extract_all(nr, "\\d*-\\d* of \\d*")
   nr <- Reduce(union, nr)
 
-  if (length(grep("of", nr)) > 0) {
-    count <- as.numeric(trimws(gsub("1-", "", strsplit(nr, "of")[[1]])))
-    nr <- ceiling(count[2] / count[1])
-  } else{
-    nr <- 1
-  }
+  # if (length(grep("of", nr)) > 0) {
+    count <- as.numeric(str_extract(nr, "\\d+$"))
+    # count <- as.numeric(trimws(gsub("1-", "", strsplit(nr, "of")[[1]])))
+    nr <- ceiling(count/1000)
+    # nr <- ceiling(count[2] / count[1])
+  # } else{
+    # nr <- 1
+  # }
   return(nr)
 }
