@@ -1,7 +1,7 @@
 #' @title Create Objects of Class "records"
 #' @description Create objects of class
-#'   \code{"\link[=records-class]{mycodist}"} from meta data
-#'   and a data.frame derived from \code{\link{mycoportal}}.
+#'   \code{"\link[=records-class]{records}"} from meta data
+#'   and a data.frame derived from \code{\link{symbiota}}.
 #'
 #' @param nr.records A numeric giving the number of records retrieved
 #' @param citation A character string with the recommended citation from the website

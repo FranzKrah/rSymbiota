@@ -1,6 +1,6 @@
 #' Plot data heatmap on geographic map
 #'
-#' @param x an object of class "\code{mycodist}", see \link{mycoportal}
+#' @param x an object of class "\code{records}", see \link{symbiota}
 #' @param mapdatabase The map database to use in mapping, see \link{plot_distmap}
 #' @param area list with four elements. Currently \code{mapdatabase} does not contain areas such as Europe,
 #' however, this may be manually chosen like this:

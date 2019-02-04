@@ -3,7 +3,7 @@
 
 #' Plot distribution data on map
 #'
-#' @param x an object of class "\code{mycodist}", see \link{mycoportal}
+#' @param x an object of class "\code{records}", see \link{symbiota}
 #' @param mapdatabase The map database to use in mapping. What you choose here
 #' 		determines what you can choose in the region parameter. One of: county,
 #' 		state, usa, world, world2, france, italy, or nz.

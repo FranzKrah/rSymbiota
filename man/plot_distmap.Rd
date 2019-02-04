@@ -9,7 +9,7 @@ plot_distmap(x, mapdatabase = "world", region = ".", legend = FALSE,
   0, height = 0), plot = TRUE)
 }
 \arguments{
-\item{x}{an object of class "\code{mycodist}", see \link{mycoportal}}
+\item{x}{an object of class "\code{records}", see \link{symbiota}}
 
 \item{mapdatabase}{The map database to use in mapping. What you choose here
 determines what you can choose in the region parameter. One of: county,

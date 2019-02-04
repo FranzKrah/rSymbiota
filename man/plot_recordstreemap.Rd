@@ -7,7 +7,7 @@
 plot_recordstreemap(x, groupvar = "country", log = TRUE)
 }
 \arguments{
-\item{x}{an object of class "\code{mycodist}", see \link{mycoportal}}
+\item{x}{an object of class "\code{records}", see \link{symbiota}}
 
 \item{groupvar}{character of grouping variable, e.g., Country}
 

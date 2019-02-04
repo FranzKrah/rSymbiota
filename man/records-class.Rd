@@ -3,9 +3,9 @@
 \docType{class}
 \name{records-class}
 \alias{records-class}
-\title{An S4 Class to represent query result from the function \link{mycoportal}}
+\title{An S4 Class to represent query result from the function \link{symbiota}}
 \description{
-\code{mycodist} holds a records table together with the query meta data and recommended citation
+\code{records} holds a records table together with the query meta data and recommended citation
 }
 \section{Slots}{
 
@@ -18,7 +18,7 @@
 
 \item{\code{records}}{A data.frame with the query records results}
 
-\item{\code{db}}{A character string specifying the database (currently only MyCoPortal)}
+\item{\code{db}}{A character string specifying the database}
 }}
 
 \seealso{

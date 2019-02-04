@@ -1,6 +1,6 @@
 #' Treemap of records data
 #'
-#' @param x an object of class "\code{mycodist}", see \link{mycoportal}
+#' @param x an object of class "\code{records}", see \link{symbiota}
 #' @param groupvar character of grouping variable, e.g., Country
 #' @param ... further arguments may be passed to \link{treemap}
 #' @param log logical whether data should be log-transformed

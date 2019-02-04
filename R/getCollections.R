@@ -8,10 +8,29 @@
 #' @importFrom methods as
 #' @export
 
-getCollections <- function(){
+getCollections <- function(db){
 
   ## Websites with collection picker
-  coll <- htmlParse("http://mycoportal.org/portal/collections/index.php")
+  ports <- portal(db)
+
+  if(nrow(ports)>1){
+    rownames(ports) <- NULL
+    cat(red("More than 1 portal found, please specify the number\n"))
+    print(ports[,1, drop = FALSE])
+    Sys.sleep(0.5)
+    cat("Please enter a row number:")
+    ent <- scan(file = "", what = "", nmax = 1)
+    ports <- ports[ent,]
+  }
+
+  portal.url <- ports$collection_url
+  portal.name <- trimws(ports$Portal.Name)
+
+  if(length(grep("unhcollection", portal.url))>0){
+    stop("This portals doesn't have collections.")
+  }
+
+  coll <- htmlParse(portal.url)
 
   ## xPath to collection names
   coll2 <- xpathSApply(coll, "//*[@id='specobsdiv']//form//div[2]//table/..//a")
@@ -22,7 +41,7 @@ getCollections <- function(){
   coll <- lapply(coll, as, "character")
   coll <- str_split(coll, "\t\t\t\t")
   coll <- unlist(coll)
-  coll <- coll[-grep("href|</a>|\tmore", coll2)]
+  coll <- coll[-grep("href|</a>|\tmore", coll)]
   coll <- coll[lapply(coll, nchar) > 0]
   coll <- gsub("\t", "", coll)
 

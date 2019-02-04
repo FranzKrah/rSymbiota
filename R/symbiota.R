@@ -1,5 +1,5 @@
 #' Retrieve records from the Symbiota portals
-#' @param taxon character string specifying the taxon name (e.g., species name, family name or higher taxon). To query higher taxa, e.g. on order level, I recommend using \code{\link{mycoportal_hightax}}
+#' @param taxon character string specifying the taxon name (e.g., species name, family name or higher taxon)
 #' @param db portal name, for an overview see \code{\link{portals}}
 #' @param country character string specifying country, e.g., "USA"
 #' @param state character string specifying state, e.g., "Massachusetts"
@@ -35,7 +35,7 @@
 #' \item{citation}{A character string with the recommended citation from the website}
 #' \item{query}{A list of the user arguments used}
 #' \item{records}{A data.frame with the query records results}
-#' \item{db}{A character string specifying the database (currently only MyCoPortal)}
+#' \item{db}{A character string specifying the database}
 #'
 #' @details Interface to the web databases of the Symbiota portals.
 #' Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data.
@@ -110,11 +110,11 @@
 #' ## University of Colorado Herbarium
 #' spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
 #' ## The Open Herbarium
-#' spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb") ## error
+#' spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb")
 #' ## Consortium of Pacific Herbaria
-#' spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
+#' spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific")
 #' ## Documenting Ethnobiology in Mexico and Central America
-#' spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
+#' spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca")
 #' ## OpenZooMuseu
 #' spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
 #' ## Mid-Atlantic Herbaria Consortium
@@ -124,7 +124,7 @@
 #' ## Consortium of Small Vertebrate Collections (CSVColl)
 #' spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
 #' ## The University of New Hampshire Collection of Insects and Other Arthropods
-#' spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
+#' spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server")
 #'
 #'
 #' plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE)
