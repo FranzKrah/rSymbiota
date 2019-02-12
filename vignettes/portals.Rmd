@@ -47,126 +47,150 @@ spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase")
 
 
 ## (6) Consortium of North American Lichen Herbaria
+## (7) Arctic Lichen Flora
 spec.dist <- symbiota(taxon = "Parmelia cunninghamii", db = "lichen")
 
 
-## (7) Smithsonian Tropical Research Institute Portal
+## (8) Smithsonian Tropical Research Institute Portal
 spec.dist <- symbiota(taxon = "Atelopus zeteki", db = "STRI")
 
 
-## (8) Aquatic Invasives
+## (9) Aquatic Invasives
 spec.dist <- symbiota(taxon = "Morone americana", db = "symbaquatic")
 
 
-## (9) Consortium of Midwest Herbaria
+## (10) Consortium of Midwest Herbaria
 spec.dist <- symbiota(taxon = "Hamamelis virginiana", db = "Midwest Herbaria")
 
 
-## (10) Consortium of Midwest Herbaria
+## (11) Consortium of Midwest Herbaria
 spec.dist <- symbiota(taxon = "Sambucus cerulea", db = "SEINet")
 
 
-## (11) Intermountain Region Herbaria Network (IRHN)
+## (12) Intermountain Region Herbaria Network (IRHN)
 spec.dist <- symbiota(taxon = "Carex microptera", db = "IRHN")
 
 
-## (12) SouthEast Regional Network of Expertise and Collections (SERNEC)
+## (13) SouthEast Regional Network of Expertise and Collections (SERNEC)
 spec.dist <- symbiota(taxon = "Diospyros virginiana", db = "SERNEC")
 
 
-## (13) North American Network of Small Herbaria
+## (14) North American Network of Small Herbaria
 spec.dist <- symbiota(taxon = "Ambrosia dumosa", db = "Small Herbaria")
 
 
-## (14) Northern Great Plains Herbaria
+## (15) Northern Great Plains Herbaria
 spec.dist <- symbiota(taxon = "Parietaria pensylvanica", db = "Great Plains")
 
 
-## (15) Consortium of Northeastern Herbaria (CNH)
+## (16) Consortium of Northeastern Herbaria (CNH)
 spec.dist <- symbiota(taxon = "Lonicera morrowii", db = "symbcnh")
 
 
-## (16) Madrean Archipelago Biodiversity Assessment (MABA) - Flora
+## (17) Madrean Archipelago Biodiversity Assessment (MABA) - Flora
 spec.dist <- symbiota(taxon = "Anisacanthus thurberi", db = "symbflora")
 
 
-## (17) Madrean Archipelago Biodiversity Assessment (MABA) - Fauna
+## (18) Madrean Archipelago Biodiversity Assessment (MABA) - Fauna
 spec.dist <- symbiota(taxon = "Ambystoma rosaceum", db = "symbfauna")
 
 
-## (18) Herbario Virtual Austral Americano
+## (19) Herbario Virtual Austral Americano
 spec.dist <- symbiota(taxon = "Calendula officinalis", db = "symbhvaa")
 
 
-## (19) CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae
+## (20) CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae
 spec.dist <- symbiota(taxon = "Campomanesia eugenioides", db = "symbcotram")
-
-
-## (20) InvertEBase Data Portal
-spec.dist <- symbiota(taxon = "Birgus latro", db = "symbinvertebase")
 
 
 ## (21) Lepidoptera of North America Network (LepNet)
 spec.dist <- symbiota(taxon = "Lepidopa californica", db = "LepNet")
 
 
-## (23) Neotropical Entomology
+## (22) Neotropical Entomology
 spec.dist <- symbiota(taxon = "Physonota alutacea", db = "symbneotropentomology")
 
 
-## (24) Neotropical Flora
+## (23) Neotropical Flora
 spec.dist <- symbiota(taxon = "Macfadyena unguis-cati", db = "symbneotropplants")
 
 
-## (25) Monarch (California Academy of Sciences)
+## (24) Monarch (California Academy of Sciences)
 spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch")
 
 
-## (26) Virtual Flora of Wisconsin
+## (25) Virtual Flora of Wisconsin
 spec.dist <- symbiota(taxon = "Fragaria virginiana", db = "Wisconsin")
 
 
-## (27) Red de Herbarios del Noroeste de México
+## (26) Red de Herbarios del Noroeste de México
 spec.dist <- symbiota(taxon = "Perityle californica", db = "Red de Herbarios")
 
 
-## (28) University of Colorado Herbarium
+## (27) University of Colorado Herbarium
 spec.dist <- symbiota(taxon = "Cypripedium fasciculatum", db = "Colorado")
 
 
-## (29) OpenZooMuseu
+## (28) OpenZooMuseu
 spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
 
 
-## (30) Mid-Atlantic Herbaria Consortium
+## (29) Mid-Atlantic Herbaria Consortium
 spec.dist <- symbiota(taxon = "Viburnum dentatum", db = "midatlanticherbaria")
 
 
-## (31) Channel Islands Biodiversity Information System
+## (30) Channel Islands Biodiversity Information System
 spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
 
 
-## (32) Consortium of Small Vertebrate Collections (CSVColl)
+## (31) Consortium of Small Vertebrate Collections (CSVColl)
 spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
 
-## (33) The Open Herbarium
+
+## (32) The Open Herbarium
 spec.dist <- symbiota(taxon = "Biarum straussii", db = "symbhereb")
 
-## (34) Documenting Ethnobiology in Mexico and Central America
+
+## (33) Documenting Ethnobiology in Mexico and Central America
 spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca")
 
-## (35) Consortium of Pacific Herbaria
+
+## (34) Consortium of Pacific Herbaria
 spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific")
 
-## (36) The University of New Hampshire Collection of Insects and Other Arthropods
-spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
+
+## (35) The University of New Hampshire Collection of Insects and Other Arthropods
+spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server")
+
+
+## (36) Capturing Californias Flowers
+## (37) Consortium of California Herbaria Portal (CCH2)
+spec.dist <- symbiota(taxon = "Sisyrinchium halophilum", db = "Californias Flowers")
+
+
+## (38) The Pteridological Collections Consortium
+spec.dist <- symbiota(taxon = "Cyathea multiflora", db = "Pteridological")
+
+
+## (39) University of New Hampshire Collection of Insects and Other Arthropods (UNHC)
+spec.dist <- symbiota(taxon = "Calliopsis nebraskensis", db = "UNHC")
+
+
+## (40) Macroalgal Consortium Herbarium Portal
+spec.dist <- symbiota(taxon = "Amphiplexia hymenocladioides", db = "Macroalgal")
+
 ```
 
 
 ## Currently not supported
 ```{r not_supported, include = TRUE, eval= FALSE}
 
-## (37) The Lundell Plant Diversity Portal
+## (41) The Lundell Plant Diversity Portal
 spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
+
+## (42) Minnesota Biodiversity Atlas
+spec.dist <- symbiota(taxon = "Picea glauca", db = "Minnesota Biodiversity Atlas") ## not supported, no table
+
+## (43) Oregon Flora # [not public]
 
 ```

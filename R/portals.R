@@ -45,8 +45,16 @@ portals <- function() {
     "Mid-Atlantic Herbaria Consortium";"";"http://midatlanticherbaria.org/portal/";"http://midatlanticherbaria.org/portal/collections/index.php"
     "Channel Islands Biodiversity Information System";"CAL-IBIS";"http://www.cal-ibis.org/";"http://www.cal-ibis.org/collections/index.php"
     "Consortium of Small Vertebrate Collections (CSVColl)";"?";"http://csvcoll.org/portal/index.php";"http://csvcoll.org/portal/collections/index.php"
-    "The University of New Hampshire Collection of Insects and Other Arthropods";"UNH server";"https://unhcollection.unh.edu/database/collections/harvestparams.php"; "https://unhcollection.unh.edu/database/index.php"'
-  )
+    "The University of New Hampshire Collection of Insects and Other Arthropods";"UNH server";"https://unhcollection.unh.edu/database/collections/harvestparams.php"; "https://unhcollection.unh.edu/database/index.php"
+    "Madrean Archipelago Biodiversity Assessment (MABA) - Fauna"; "MABA"; "http://madrean.org/symbfauna/projects/index.php"; "http://madrean.org/symbfauna/collections/index.php"
+    "Macroalgal Consortium Herbarium Portal"; "?"; "http://macroalgae.org/portal/index.php"; "http://macroalgae.org/portal/collections/index.php"
+    "Consortium of Midwest Herbaria";"Consortium of Midwest Herbaria";"http://midwestherbaria.org/portal/index.php"; "http://midwestherbaria.org/portal/collections/index.php"
+    "Oregon Flora"; "[not public]"; "http://symbiota.oregonflora.org/portal/index.php"; "http://symbiota.oregonflora.org/portal/index.php"
+    "Minnesota Biodiversity Atlas"; "Minnesota Biodiversity Atlas"; "http://bellatlas.umn.edu"; "http://bellatlas.umn.edu/collections/index.php"
+    "Capturing Californias Flowers"; "Capturing California`s Flowers"; "http://www.portal.capturingcaliforniasflowers.org/portal/index.php"; "http://www.portal.capturingcaliforniasflowers.org/portal/collections/index.php"
+    "The Pteridological Collections Consortium"; "Pteridological"; "http://www.pteridoportal.org/portal/"; "http://www.pteridoportal.org/portal/collections/index.php"
+    "Consortium of California Herbaria Portal (CCH2)"; "CCH2"; "http://www.portal.capturingcaliforniasflowers.org/portal/"; "http://www.portal.capturingcaliforniasflowers.org/portal/collections/index.php"
+    "University of New Hampshire Collection of Insects and Other Arthropods (UNHC)"; "UNHC"; "https://unhcollection.unh.edu/database/index.php"; "https://unhcollection.unh.edu/database/collections/harvestparams.php"' )
   tab <- read.csv(text = tab, sep = ";")
   tab[] <- apply(tab, 2, as.character)
   tab[] <- apply(tab, 2, trimws)

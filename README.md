@@ -11,14 +11,6 @@ Very detailled information can be found under: http://symbiota.org/docs/.
 The rSymbiota R package is an interface to the content stored within the Symbiota portals. It allows to download records from the databases readily in R for further analysis. It further provides some basic plotting functions. Below I will show the basic usability and some further possibilites of using the data.
 
 
-## Requirements
-Under the new MacOS Mojave there have been problems with the sf and raster package. The introduction vignette works fine under Sierra, Mojave and Windows10. However, the vignette *application example* might create errors under Mojave.
-
-R version 3.5.1 (2018-07-02)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.6
-
-
 ## Install rSymbiota
 ```{r setup, include=TRUE, eval=FALSE}
 
@@ -39,7 +31,7 @@ library("rSymbiota")
 ```
 
 ## The portals
-Symbiota currently hosts ca. 40 portals on a diverse range of taxonomic groups and locations. To get an overview of available portals, see either function portals() or http://symbiota.org/docs/symbiota-introduction/active-symbiota-projects/.
+Symbiota currently hosts 43 portals on a diverse range of taxonomic groups and locations. To get an overview of available portals, see either function portals() or http://symbiota.org/docs/symbiota-introduction/active-symbiota-projects/.
 
 See this vignette for a list of portals and code to interact with them. 
 [Vignette: Portals](http://htmlpreview.github.io/?https://github.com/FranzKrah/rSymbiota_dev/blob/master/vignettes/portals.html)
