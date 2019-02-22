@@ -19,8 +19,8 @@ records(nr.records, citation, query, records, db)
 }
 \description{
 Create objects of class
-  \code{"\link[=records-class]{mycodist}"} from meta data
-  and a data.frame derived from \code{\link{mycoportal}}.
+  \code{"\link[=records-class]{records}"} from meta data
+  and a data.frame derived from \code{\link{symbiota}}.
 }
 \author{
 Franz-Sebastian Krah

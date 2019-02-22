@@ -4,7 +4,10 @@
 \alias{getCollections}
 \title{List of available collections}
 \usage{
-getCollections()
+getCollections(db)
+}
+\arguments{
+\item{db}{portal name, for an overview see \code{\link{portals}}}
 }
 \description{
 List of available collections

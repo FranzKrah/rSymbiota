@@ -41,13 +41,14 @@
 #' Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data.
 #' Currently ca. 40 portals are avaiable:
 #' Consortium of North American Lichen Herbaria, Arctic Lichen Flora, Consortium of North American Bryophyte Herbaria, Frullania Collaborative Research Network, Macroalgal Consortium Herbarium Portal, MyCoPortal, Smithsonian Tropical Research Institute Portal (STRI), Aquatic Invasives, Aquatic Invasives, Aquatic Invasives, Consortium of Midwest Herbaria, SEINet, Intermountain Region Herbaria Network (IRHN), SouthEast Regional Network of Expertise and Collections (SERNEC), North American Network of Small Herbaria, Northern Great Plains Herbaria, Consortium of Northeastern Herbaria (CNH), Madrean Archipelago Biodiversity Assessment (MABA), Madrean Archipelago Biodiversity Assessment (MABA) - Fauna, Herbario Virtual Austral Americano, CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae, InvertEBase Data Portal, Symbiota Collections of Arthropods Network (SCAN), Lepidoptera of North America Network (LepNet), Neotropical Entomology, Neotropical Flora, Monarch (California Academy of Sciences), The Lundell Plant Diversity Portal, Virtual Flora of Wisconsin, Red de Herbarios del Noroeste de México, University of Colorado Herbarium, The Open Herbarium, Consortium of Pacific Herbaria, Minnesota Biodiversity Atlas, Documenting Ethnobiology in Mexico and Central America, OpenZooMuseum, Mid-Atlantic Herbaria Consortium, Channel Islands Biodiversity Information System, Consortium of Small Vertebrate Collections (CSVColl), The University of New Hampshire Collection of Insects and Other Arthropods.
-#' For an overview and URLs see \code{\link{portals()}}
+#' For an overview and URLs see \code{\link{portals}}
 #' @references \url{http://symbiota.org/docs/}
 #' @references Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
 #'
 #' @import RSelenium httr RCurl
 #' @importFrom XML htmlParse xpathApply xmlValue
 #' @importFrom crayon red
+#' @importFrom utils capture.output
 #'
 #' @author Franz-Sebastian Krah
 #'
@@ -476,13 +477,16 @@ symbiota <- function(taxon = "Amanita muscaria",
   tabs <- do.call(rbind, tabs)
   cat(nrow(tabs), "records were downloaded \n")
 
+  names(tabs) <- gsub(" ", "\\.", names(tabs))
+  names(tabs) <- gsub("/", "\\.", names(tabs))
+
   ## Add coordinates as lon lat column
   tabs$coord <- stringr::str_extract(tabs$Locality, "-?\\d*\\.\\d*\\s\\-?\\d*\\.\\d*")
   if(!any(is.na(tabs$coord))){
-  coords <- data.frame(do.call(rbind, strsplit(tabs$coord , " ")))
-  names(coords) <- c("lat", "lon")
-  coords <- suppressWarnings(apply(coords, 2, function(x) as.numeric(as.character(x))))
-  tabs <- data.frame(tabs, coords)
+    coords <- data.frame(do.call(rbind, strsplit(tabs$coord , " ")))
+    names(coords) <- c("lat", "lon")
+    coords <- suppressWarnings(apply(coords, 2, function(x) as.numeric(as.character(x))))
+    tabs <- data.frame(tabs, coords)
   }
 
   # Close Website and Server ------------------------------------------------

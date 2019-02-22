@@ -179,18 +179,21 @@ spec.dist <- symbiota(taxon = "Calliopsis nebraskensis", db = "UNHC")
 ## (40) Macroalgal Consortium Herbarium Portal
 spec.dist <- symbiota(taxon = "Amphiplexia hymenocladioides", db = "Macroalgal")
 
+## (41) Illinois Natural History Survey’s Biological Collections
+spec.dist <- symbiota(taxon = "Lampetra aepyptera", db = "Illinois")
+
 ```
 
 
 ## Currently not supported
 ```{r not_supported, include = TRUE, eval= FALSE}
 
-## (41) The Lundell Plant Diversity Portal
+## (42) The Lundell Plant Diversity Portal
 spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
 
-## (42) Minnesota Biodiversity Atlas
+## (43) Minnesota Biodiversity Atlas
 spec.dist <- symbiota(taxon = "Picea glauca", db = "Minnesota Biodiversity Atlas") ## not supported, no table
 
-## (43) Oregon Flora # [not public]
+## (44) Oregon Flora # [not public]
 
 ```

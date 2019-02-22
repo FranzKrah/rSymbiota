@@ -1,5 +1,6 @@
 #' List of available collections
 #'
+#' @param db portal name, for an overview see \code{\link{portals}}
 #' @details Get list of available collections from the MyCoPortal. For details also see \url{http://mycoportal.org/portal/collections/index.php}
 #'
 #' @author Franz-Sebastian Krah
