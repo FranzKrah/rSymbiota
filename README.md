@@ -34,7 +34,7 @@ library("rSymbiota")
 Symbiota currently hosts 43 portals on a diverse range of taxonomic groups and locations. To get an overview of available portals, see either function portals() or http://symbiota.org/docs/symbiota-introduction/active-symbiota-projects/.
 
 See this vignette for a list of portals and code to interact with them. 
-[Vignette: Portals](http://htmlpreview.github.io/?https://github.com/FranzKrah/rSymbiota_dev/blob/master/vignettes/portals.html)
+[Vignette: Portals](http://htmlpreview.github.io/?https://github.com/FranzKrah/rSymbiota/blob/master/vignettes/portals.html)
 
 
 
@@ -122,9 +122,13 @@ plot_grid(p.mat, p.map, ncol = 2)
 
 ```
 
+## Caveats
+We encountered that portals table output renders coordinate information unreadable. We are in contact with the Symbiota portal maintainers to fix this issue. We, however, think this affects only small parts of the data avaiable via the portals. 
+
+
 ## Meta
 
-Please note that this project is released with a Contributor [Code of Conduct](https://github.com/FranzKrah/rSymbiota_dev/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a Contributor [Code of Conduct](https://github.com/FranzKrah/rSymbiota/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-Please [report](https://github.com/FranzKrah/rSymbiota_dev/issues) any issues or bugs.
+Please [report](https://github.com/FranzKrah/rSymbiota/issues) any issues or bugs.
  
