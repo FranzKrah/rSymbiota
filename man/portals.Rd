@@ -2,12 +2,12 @@
 % Please edit documentation in R/portals.R
 \name{portals}
 \alias{portals}
-\title{Portals available through the Symbiota}
+\title{Portals available through Symbiota}
 \usage{
 portals()
 }
 \description{
-Portals available through the Symbiota
+Portals available through Symbiota
 }
 \details{
 Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data

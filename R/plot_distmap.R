@@ -17,7 +17,8 @@
 #' @param jitter If you use jitter, the amount by which to jitter
 #' 		points in width, height, or both.
 #' @param plot logical
-#'
+#' @param gazetter logical if Gazetter should be used to add long lat for USA counties where coordinates are missing; default = TRUE
+
 #' @return Map (using \link{ggplot2} package) of points or tiles on a world map.
 #' @import ggplot2 mapview sf sp
 #' @importFrom stats complete.cases
@@ -33,50 +34,68 @@
 #' @export
 
 plot_distmap <- function(x,
-                       mapdatabase = "world",
-                       region = ".",
-                       legend = FALSE,
-                       panel = FALSE,
-                       interactive = TRUE,
-                       jitter = position_jitter(width = 0, height = 0),
-                       plot = TRUE) {
+                         mapdatabase = "world",
+                         region = ".",
+                         legend = FALSE,
+                         panel = FALSE,
+                         interactive = TRUE,
+                         jitter = position_jitter(width = 0, height = 0),
+                         plot = TRUE,
+                         gazetter = TRUE) {
+
+
+  ## Add lat long Gazeter file
+  if(gazetter){
+    ipt <- x@records
+    fpath <- system.file("extdata", "2017_Gaz_counties_national.txt", package="rSymbiota")
+    county.coord <- read.csv(fpath, sep = "\t")
+    # can be found and downloaded here:
+    # https://www.census.gov/geo/maps-data/data/gazetteer2017.html
+
+    county.coord$NAME <- gsub(" County", "", county.coord$NAME)
+    ipt$County <- gsub(" Co\\.", "", ipt$County)
+    ipt <- data.frame(ipt, county.coord[match(ipt$County, county.coord$NAME),][,c("INTPTLAT","INTPTLONG")])
+
+    ipt$lat[is.na(ipt$lat)] <- ipt$INTPTLAT[is.na(ipt$lat)]
+    ipt$lon[is.na(ipt$lon)] <- ipt$INTPTLONG[is.na(ipt$lon)]
+    x@records <- ipt
+  }
 
   if(!interactive){
-  ipt <- x@records
-  ipt$spec <- ipt$Species.Name
+    ipt <- x@records
 
-  tomap <- ipt[complete.cases(ipt$lat, ipt$lon), ]
-  tomap <- tomap[-(which(tomap$lat <=90 || tomap$lon <=180)), ]
-  world <- map_data(map=mapdatabase, region=region) # get world map data
+    tomap <- ipt[complete.cases(ipt$lat, ipt$lon), ]
+    tomap <- tomap[-(which(tomap$lat <=90 || tomap$lon <=180)), ]
+    world <- map_data(map=mapdatabase, region=region) # get world map data
 
-  tomap <- tomap[(tomap$lat >= min(world$lat) & tomap$lat <= max(world$lat)) &
-                   (tomap$lon >= min(world$long) & tomap$lon <= max(world$long)),]
+    tomap <- tomap[(tomap$lat >= min(world$lat) & tomap$lat <= max(world$lat)) &
+                     (tomap$lon >= min(world$long) & tomap$lon <= max(world$long)),]
 
-  message(paste("Rendering map...plotting ", nrow(tomap), " points. Not all records have coordinates.", sep=""))
+    message(paste("Rendering map...plotting ", nrow(tomap), " points. Not all records have coordinates.", sep=""))
 
-  if(panel){
-    nr.rec <- table(tomap$spec)
-    nr.rec <- names(nr.rec)[nr.rec>panel]
-    tomap <- tomap[tomap$spec %in% nr.rec, ]
+    if(panel){
+      nr.rec <- table(tomap$spec)
+      nr.rec <- names(nr.rec)[nr.rec>panel]
+      tomap <- tomap[tomap$spec %in% nr.rec, ]
     }
 
-  p <- ggplot(world, aes(world$long, world$lat)) + # make the plot
-    geom_polygon(aes(group=world$group), fill="white", color="gray40", size=0.2) +
-    geom_point(data=tomap, aes(tomap$lon, tomap$lat, color = tomap$spec),
-               alpha = 0.4, size = 3, position = jitter) +
-    labs(x="", y="") + theme_bw(base_size = 14) +
-    ggtitle(paste("Distribution map for", x@query$taxon)) +
-    coord_fixed(1.3)
+    p <- ggplot(world, aes(world$long, world$lat)) + # make the plot
+      geom_polygon(aes(group=world$group), fill="white", color="gray40", size=0.2) +
+      geom_point(data=tomap, aes(tomap$lon, tomap$lat, color = tomap$Scientific.Name),
+                 alpha = 0.4, size = 3, position = jitter) +
+      labs(x="", y="") + theme_bw(base_size = 14) +
+      ggtitle(paste("Distribution map for", x@query$taxon)) +
+      coord_fixed(1.3)
 
-  if(!legend)
-    p <- p + theme(legend.position = "none")
+    if(!legend)
+      p <- p + theme(legend.position = "none")
 
-  if(panel){
-    p <- p + facet_wrap(~spec)
-  }
-  if(plot)
-    plot(p)
-  return(p)
+    if(panel){
+      p <- p + facet_wrap(~spec)
+    }
+    if(plot)
+      plot(p)
+    return(p)
   }
   if(interactive){
     x@records <- x@records[!is.na(x@records$lat), ]

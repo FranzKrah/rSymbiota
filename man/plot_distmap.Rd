@@ -6,7 +6,7 @@
 \usage{
 plot_distmap(x, mapdatabase = "world", region = ".", legend = FALSE,
   panel = FALSE, interactive = TRUE, jitter = position_jitter(width =
-  0, height = 0), plot = TRUE)
+  0, height = 0), plot = TRUE, gazetter = TRUE)
 }
 \arguments{
 \item{x}{an object of class "\code{records}", see \link{symbiota}}
@@ -30,6 +30,8 @@ for the state layer.}
 points in width, height, or both.}
 
 \item{plot}{logical}
+
+\item{gazetter}{logical if Gazetter should be used to add long lat for USA counties where coordinates are missing; default = TRUE}
 }
 \value{
 Map (using \link{ggplot2} package) of points or tiles on a world map.

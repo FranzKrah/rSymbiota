@@ -1,6 +1,6 @@
 Package: rSymbiota
 Type: Package
-Title: R Interface to Symbiota Portals
+Title: rSymbiota – an R interface to Symbiota portals for accessing multi-organismal biodiversity data
 Version: 1.0.0
 Author: Franz-Sebastian Krah
 Author@R: c(
@@ -8,7 +8,7 @@ Author@R: c(
     person("McCabe", "Lindsie", role = "aut"))
     )
 Maintainer: The package maintainer <f.krah@mailbox.org>
-Description: Interface to the web databases of the Symbiota portals. Allows to query taxon distribution information from ca. 40 portals of plants, animals and fungi. 
+Description: Interface to the web data portals of Symbiota. Allows to query taxon natural history collections (herbarium specimens, etc.) from 41 portals including plants, animals and fungi. 
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

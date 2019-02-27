@@ -4,15 +4,16 @@ library(rSymbiota)
 
 ## no results
 ## MyCoPortal
-spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal")
+spec.dist <- symbiota(taxon = "Helvella", db = "mycoportal", wait = 4)
+spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal", wait = 4)
 ## Symbiota Collections of Arthropods Network
-spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
+spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN", wait = 6)
 ## Consortium of North American Bryophyte Herbaria
-spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte")
+spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte", wait = 5)
 ## Frullania Collaborative Research Network
 spec.dist <- symbiota(taxon = "Frullania kunzei", db = "frullania")
 ## InvertEBase Data Portal
-spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase")
+spec.dist <- symbiota(taxon = "Lumbricus", db = "invertebase", wait = 4)
 ## Consortium of North American Lichen Herbaria
 spec.dist <- symbiota(taxon = "Parmelia cunninghamii", db = "lichen")
 ## Smithsonian Tropical Research Institute Portal
@@ -78,14 +79,20 @@ spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
 
 
 x <- spec.dist
-plot_distmap(x = x, mapdatabase = "world")
+plot_distmap(x = x, mapdatabase = "usa", interactive = FALSE, gazetter = F)
 plot_recordstreemap(x = x, groupvar = "country", log = FALSE)
-plot_datamap(x = x, mapdatabase = "state", index = "rec")
-# plot_datamap(x = x, mapdatabase = "world", index = "rec",
-             # area = list(min_long = -10, max_long = 30, min_lat = 30, max_lat = 70))
+plot_datamap(x = x, mapdatabase = "state", index = "rich", gazetter = F)
+plot_datamap(x = x, mapdatabase = "world", index = "rec",
+             area = list(min_long = -10, max_long = 30, min_lat = 30, max_lat = 70))
 
 details(x, x@records$Symbiota.ID[1])
 
+plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE,
+             gazetter = TRUE)
+plot_distmap(x = spec.dist, mapdatabase = "usa", interactive = FALSE)
+plot_distmap(x = spec.dist, mapdatabase = "world", interactive = TRUE)
+plot_datamap(x = spec.dist, mapdatabase = "state", index = "rich")
+plot_recordstreemap(x = spec.dist, log = FALSE)
 
 
 ### for debugging:

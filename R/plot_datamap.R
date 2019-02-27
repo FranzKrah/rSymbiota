@@ -7,7 +7,10 @@
 #' area = list(min_long = -10, max_long = 24, min_lat = 14, max_lat = 70)
 #' @param index character string, either "rec" (number of records) or "rich" (number of species)
 #' @param plot logical
+#' @param trans transformation of the data, defaukt = log10
+#' @param gazetter logical if Gazetter should be used to add long lat for USA counties where coordinates are missing; default = TRUE
 #' @import ggplot2 maps
+#' @references Gazetter: https://www.census.gov/geo/maps-data/data/gazetteer2017.html
 #' @importFrom Hmisc capitalize
 #' @importFrom dplyr left_join
 #'
@@ -21,10 +24,15 @@
 #' @export
 
 
-plot_datamap <- function(x, mapdatabase = "world", area = NULL, index = "rich", plot = TRUE){
+plot_datamap <- function(x,
+           mapdatabase = "world",
+           area = NULL,
+           index = "rich",
+           plot = TRUE,
+           trans = "log10",
+           gazetter = TRUE) {
 
   ipt <- x@records
-  ipt$spec <- ipt$Species.Name
 
   ## Initialize map
   if(!is.null(area)){
@@ -32,14 +40,33 @@ plot_datamap <- function(x, mapdatabase = "world", area = NULL, index = "rich", 
   }
   world_map <- map_data(map = mapdatabase, region=".")
 
-  ## Calculate number of records for each country or state
 
+  ## Add lat long Gazeter file
+  if(gazetter){
+    fpath <- system.file("extdata", "2017_Gaz_counties_national.txt", package="rSymbiota")
+    county.coord <- read.csv(fpath, sep = "\t")
+    # can be found and downloaded here:
+    # https://www.census.gov/geo/maps-data/data/gazetteer2017.html
+
+    county.coord$NAME <- gsub(" County", "", county.coord$NAME)
+    ipt$County <- gsub(" Co\\.", "", ipt$County)
+    ipt <- data.frame(ipt, county.coord[match(ipt$County, county.coord$NAME),][,c("INTPTLAT","INTPTLONG")])
+
+    ipt$lat[is.na(ipt$lat)] <- ipt$INTPTLAT[is.na(ipt$lat)]
+    ipt$lon[is.na(ipt$lon)] <- ipt$INTPTLONG[is.na(ipt$lon)]
+
+  }
+
+  ## Calculate number of records for each country or state
   if(index == "rich"){
-    ipt <- data.frame(nr.spec = tapply(ipt$spec, ipt$Country, function(x) length(unique(x))))
+    if(mapdatabase == "world"){
+    ipt <- data.frame(nr.spec = tapply(ipt$Scientific.Name, ipt$Country, function(x) length(unique(x))))
+    }
+    if(mapdatabase %in% c("state", "usa")){
+      ipt <- data.frame(nr.spec = tapply(ipt$Scientific.Name, ipt$State.Province, function(x) length(unique(x))))
+    }
     ipt <- data.frame(rownames(ipt), ipt)
     rownames(ipt) <- NULL
-
-
     tit <- paste(" Number of species for", x@query$taxon)
 
   }
@@ -77,7 +104,7 @@ plot_datamap <- function(x, mapdatabase = "world", area = NULL, index = "rich", 
   p <- ggplot(ipt, aes(x = ipt$long, y = ipt$lat, group = ipt$group))+
     geom_polygon(aes(fill = ipt$Count), color = "gray65") +
     scale_fill_gradientn(colours =c("lightgray", "yellow", "red"),
-                         trans = "log10", na.value = "white") +
+                         trans = trans, na.value = "white") +
     coord_fixed(1.3) +
     theme_bw() +
     xlab("Longitude") + ylab("Latitude") +
@@ -85,7 +112,7 @@ plot_datamap <- function(x, mapdatabase = "world", area = NULL, index = "rich", 
           axis.title=element_text(size=12),
           legend.text=element_text(size=12),
           plot.title = element_text(hjust = 0.5)) +
-    ggtitle(paste(expression(Log[10]), tit)) +
+    ggtitle(tit) +
     labs(fill = "")
 
   if(plot)

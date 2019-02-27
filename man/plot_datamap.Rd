@@ -5,7 +5,7 @@
 \title{Plot data heatmap on geographic map}
 \usage{
 plot_datamap(x, mapdatabase = "world", area = NULL, index = "rich",
-  plot = TRUE)
+  plot = TRUE, trans = "log10", gazetter = TRUE)
 }
 \arguments{
 \item{x}{an object of class "\code{records}", see \link{symbiota}}
@@ -19,6 +19,10 @@ area = list(min_long = -10, max_long = 24, min_lat = 14, max_lat = 70)}
 \item{index}{character string, either "rec" (number of records) or "rich" (number of species)}
 
 \item{plot}{logical}
+
+\item{trans}{transformation of the data, defaukt = log10}
+
+\item{gazetter}{logical if Gazetter should be used to add long lat for USA counties where coordinates are missing; default = TRUE}
 }
 \description{
 Plot data heatmap on geographic map
@@ -28,6 +32,9 @@ Plot data heatmap on geographic map
 am.dist <- mycoportal(taxon = "Amanita muscaria")
 plot_datamap(am.dist, mapdatabase = "state")
 }
+}
+\references{
+Gazetter: https://www.census.gov/geo/maps-data/data/gazetteer2017.html
 }
 \author{
 Franz-Sebastian Krah
