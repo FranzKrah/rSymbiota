@@ -1,6 +1,10 @@
 #' Portals available through Symbiota
 #' @details Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data
 #' @author Franz-Sebastian Krah
+#' @examples
+#' \dontrun{
+#' portals()
+#' }
 #' @export
 portals <- function() {
 
@@ -14,6 +18,10 @@ portals <- function() {
 #' Find URL for portal db
 #' @param db character string specifying Symbiota database
 #' @author Franz-Sebastian Krah
+#' @examples
+#' \dontrun{
+#' portal(db = "lichen")
+#' }
 #' @export
 portal <- function(db = "lichen") {
 

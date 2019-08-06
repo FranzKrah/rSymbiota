@@ -4,14 +4,14 @@
 \alias{symbiota}
 \title{Retrieve records from the Symbiota portals}
 \usage{
-symbiota(taxon = "Amanita muscaria", db = "SCAN", country = "",
+symbiota(taxon = "Amanita muscaria", db = "mycoportal", country = "",
   state = "", county = "", locality = "", elevation_from = "",
-  elevation_to = "", host = "", taxon_type = 1, collection = "all",
-  north_lat = "", south_lat = "", west_lon = "", east_lon = "",
-  point_lat = "", point_lon = "", radius = "", collector = "",
-  collector_num = "", coll_date1 = "", coll_date2 = "",
-  syns = TRUE, verbose = TRUE, screenshot = TRUE, port = 4445L,
-  browserName = "chrome", remoteServerAddr = "localhost", wait = 2)
+  elevation_to = "", host = "", taxon_type = 1, north_lat = "",
+  south_lat = "", west_lon = "", east_lon = "", point_lat = "",
+  point_lon = "", radius = "", collector = "", collector_num = "",
+  coll_date1 = "", coll_date2 = "", syns = TRUE, verbose = FALSE,
+  screenshot = FALSE, port = 4445L, browserName = "chrome",
+  remoteServerAddr = "localhost", wait = 4, max_attempts = 5)
 }
 \arguments{
 \item{taxon}{character string specifying the taxon name (e.g., species name, family name or higher taxon)}
@@ -33,8 +33,6 @@ symbiota(taxon = "Amanita muscaria", db = "SCAN", country = "",
 \item{host}{character string specifying host species, e.g., "Betula alba"}
 
 \item{taxon_type}{integer, one of 1 to 5 representing "Family or Scientific Name", "Scientific Name only", "Family Only", "Higher Taxonomy", Common Name"}
-
-\item{collection}{either "all" or a vector or integers with number corresponding to collection. For a list of collections use function \code{getCollections()}}
 
 \item{north_lat}{character string, coordinate e.g., "45"}
 
@@ -72,13 +70,15 @@ symbiota(taxon = "Amanita muscaria", db = "SCAN", country = "",
 
 \item{wait}{numberic specifying the seconds to wait for website to load, recommended 2 for good internet connections;
 higher otherwise. It would be good to first look up the number of pages for a species and to compare it with the function output to see whether loading times are sufficient.}
+
+\item{max_attempts}{maximum number of tries in case of internet instability or lost connection}
 }
 \value{
-x an object of class "\code{\link{records}}" with the following components:
+x an object of class \code{records} with the following components:
 \item{nr.records}{A numeric giving the number of records retrieved}
 \item{citation}{A character string with the recommended citation from the website}
 \item{query}{A list of the user arguments used}
-\item{records}{A data.frame with the query records results}
+\item{records}{A data.frame with the query records results (accessible via 'at' symbol)}
 \item{db}{A character string specifying the database}
 }
 \description{
@@ -89,15 +89,20 @@ Interface to the web databases of the Symbiota portals.
 Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data.
 Currently ca. 40 portals are avaiable:
 Consortium of North American Lichen Herbaria, Arctic Lichen Flora, Consortium of North American Bryophyte Herbaria, Frullania Collaborative Research Network, Macroalgal Consortium Herbarium Portal, MyCoPortal, Smithsonian Tropical Research Institute Portal (STRI), Aquatic Invasives, Aquatic Invasives, Aquatic Invasives, Consortium of Midwest Herbaria, SEINet, Intermountain Region Herbaria Network (IRHN), SouthEast Regional Network of Expertise and Collections (SERNEC), North American Network of Small Herbaria, Northern Great Plains Herbaria, Consortium of Northeastern Herbaria (CNH), Madrean Archipelago Biodiversity Assessment (MABA), Madrean Archipelago Biodiversity Assessment (MABA) - Fauna, Herbario Virtual Austral Americano, CoTRAM – Cooperative Taxonomic Resource for Amer. Myrtaceae, InvertEBase Data Portal, Symbiota Collections of Arthropods Network (SCAN), Lepidoptera of North America Network (LepNet), Neotropical Entomology, Neotropical Flora, Monarch (California Academy of Sciences), The Lundell Plant Diversity Portal, Virtual Flora of Wisconsin, Red de Herbarios del Noroeste de México, University of Colorado Herbarium, The Open Herbarium, Consortium of Pacific Herbaria, Minnesota Biodiversity Atlas, Documenting Ethnobiology in Mexico and Central America, OpenZooMuseum, Mid-Atlantic Herbaria Consortium, Channel Islands Biodiversity Information System, Consortium of Small Vertebrate Collections (CSVColl), The University of New Hampshire Collection of Insects and Other Arthropods.
-For an overview and URLs see \code{\link{portals}}
+For an overview and URLs see \code{\link{portals}}. The function currently searches all collections, because the package is meant for large-scale access.
 }
 \examples{
 \dontrun{
-## Download Amanita muscaria observations and plot visualize data
-spec.dist <- symbiota(taxon = "Helvella", db = "mycoportal")
-## Symbiota Collections of Arthropods Network
-# spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN")
+## Download Helvella observations and plot visualize data
+spec.dist <- symbiota(taxon = "Helvella", db = "mycoportal", wait = 3)
 # for all available portals and examples see vignette
+## increase wait if your internet is slow (in general fast internet is recommended)
+
+# This is how the records table can be accessed:
+recordsTable(spec.dist)
+
+## However, for the other functions of the package, the output of 'symbiota'
+## can be directly forwarded, for example:
 
 plot_distmap(x = spec.dist, mapdatabase = "world", interactive = FALSE,
 gazetter = TRUE)

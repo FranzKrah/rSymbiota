@@ -1,23 +1,21 @@
 Package: rSymbiota
 Type: Package
-Title: rSymbiota – an R interface to Symbiota portals for accessing multi-organismal biodiversity data
+Title: Interface to 'Symbiota' Portals for Accessing Multi-Organismal Biodiversity Data
 Version: 1.0.0
-Author: Franz-Sebastian Krah
-Author@R: c(
-    person("Franz-Sebastian", "Krah", , "f.krah@mailbox.org", c("aut", "cre")),
-    person("McCabe", "Lindsie", role = "aut"))
+Authors@R: c(
+    person("Franz-Sebastian", "Krah", email =  "f.krah@mailbox.org", role = c("aut", "cre")),
+    person("McCabe", "Lindsie", role = "aut")
     )
-Maintainer: The package maintainer <f.krah@mailbox.org>
-Description: Interface to the web data portals of Symbiota. Allows to query taxon natural history collections (herbarium specimens, etc.) from 41 portals including plants, animals and fungi. 
+Description: Interface to the web data portals of 'Symbiota'. Allows to query taxon natural history collections (herbarium specimens, etc.) from 41 portals including plants, animals and fungi. See the 'Symbiota' main page <http://symbiota.org/docs/> for more information.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Reference: Gries, C., Gilbert, E. E., and Franz, N. M. (2014). Symbiota–a virtual platform for creating voucher-based biodiversity information communities. Biodiversity Data Journal, (2).
 URL: http://symbiota.org/docs/
 Imports: RSelenium, httr, rworldmap, ggplot2, maps, rvest, XML, xml2, stringr, treemap, magick, Hmisc, crayon, dplyr, sf, mapview, sp, methods, RCurl, sys, knitr
 Collate:
     'details.R'
+    'download.R'
     'getCollections.R'
     'is_onclick_next_page.R'
     'is_table_button.R'
@@ -26,10 +24,9 @@ Collate:
     'plot_distmap.R'
     'plot_recordstreemap.R'
     'portals.R'
-    'read_mycoporta_csv.R'
     'records-class.R'
     'records.R'
-    'remote_table.R'
+    'recordsTable.R'
     'retry.R'
     'start_stop_docker.R'
     'symbiota.R'

@@ -8,7 +8,7 @@ plot_datamap(x, mapdatabase = "world", area = NULL, index = "rich",
   plot = TRUE, trans = "log10", gazetter = TRUE)
 }
 \arguments{
-\item{x}{an object of class "\code{records}", see \link{symbiota}}
+\item{x}{an object of class \code{records}, see \link{symbiota}}
 
 \item{mapdatabase}{The map database to use in mapping, see \link{plot_distmap}}
 
@@ -29,7 +29,8 @@ Plot data heatmap on geographic map
 }
 \examples{
 \dontrun{
-am.dist <- mycoportal(taxon = "Amanita muscaria")
+am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+head(recordsTable(am.dist))
 plot_datamap(am.dist, mapdatabase = "state")
 }
 }

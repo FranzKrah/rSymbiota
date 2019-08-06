@@ -12,6 +12,11 @@ Portals available through Symbiota
 \details{
 Symbiota is an open source content management system for curating specimen- and observation-based biodiversity data
 }
+\examples{
+\dontrun{
+portals()
+}
+}
 \author{
 Franz-Sebastian Krah
 }

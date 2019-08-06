@@ -21,9 +21,13 @@ Map (using treemap package)
 \description{
 Treemap of records data
 }
+\details{
+Makes use of R package 'treemap'
+}
 \examples{
 \dontrun{
-am.dist <- mycoportal(taxon = "Amanita muscaria")
+am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+head(recordsTable(am.dist))
 plot_recordstreemap(am.dist, log = FALSE)
 }
 }

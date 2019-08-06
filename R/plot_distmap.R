@@ -18,16 +18,19 @@
 #' 		points in width, height, or both.
 #' @param plot logical
 #' @param gazetter logical if Gazetter should be used to add long lat for USA counties where coordinates are missing; default = TRUE
+#' @param size size of points
 
 #' @return Map (using \link{ggplot2} package) of points or tiles on a world map.
 #' @import ggplot2 mapview sf sp
+#' @importFrom utils read.csv
 #' @importFrom stats complete.cases
 #'
 #' @author Franz-Sebastian Krah
 #'
 #' @examples
 #' \dontrun{
-#' am.dist <- mycoportal(taxon = "Amanita muscaria")
+#' am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+#' head(recordsTable(am.dist))
 #' plot_distmap(am.dist, mapdatabase = "state", interactive = TRUE)
 #' plot_distmap(am.dist, mapdatabase = "state", interactive = FALSE)
 #' }
@@ -41,7 +44,8 @@ plot_distmap <- function(x,
                          interactive = TRUE,
                          jitter = position_jitter(width = 0, height = 0),
                          plot = TRUE,
-                         gazetter = TRUE) {
+                         gazetter = TRUE,
+                         size = 1) {
 
 
   ## Add lat long Gazeter file
@@ -81,8 +85,8 @@ plot_distmap <- function(x,
 
     p <- ggplot(world, aes(world$long, world$lat)) + # make the plot
       geom_polygon(aes(group=world$group), fill="white", color="gray40", size=0.2) +
-      geom_point(data=tomap, aes(tomap$lon, tomap$lat, color = tomap$Scientific.Name),
-                 alpha = 0.4, size = 3, position = jitter) +
+      geom_point(data=tomap, aes(tomap$lon, tomap$lat, color = tomap$species),
+                 alpha = 0.4, size = size, position = jitter) +
       labs(x="", y="") + theme_bw(base_size = 14) +
       ggtitle(paste("Distribution map for", x@query$taxon)) +
       coord_fixed(1.3)

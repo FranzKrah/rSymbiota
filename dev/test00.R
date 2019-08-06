@@ -4,10 +4,18 @@ library(rSymbiota)
 
 ## no results
 ## MyCoPortal
-spec.dist <- symbiota(taxon = "Helvella", db = "mycoportal", wait = 4)
-spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal", wait = 4)
+spec.dist <- symbiota(taxon = "", db = "Open Herbarium", wait = 5,
+                      verbose = TRUE, country = "USA")
+
+
+spec.dist <- symbiota(taxon = "Amanita muscaria", db = "mycoportal", wait = 5, screenshot = TRUE)
+
 ## Symbiota Collections of Arthropods Network
-spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN", wait = 6)
+spec.dist <- symbiota(taxon = "Aedes aegypti", db = "SCAN", wait = 5)
+
+recordsTable(spec.dist)
+details(spec.dist, 2799041)
+
 ## Consortium of North American Bryophyte Herbaria
 spec.dist <- symbiota(taxon = "Funaria hygrometrica", db = "bryophyte", wait = 5)
 ## Frullania Collaborative Research Network
@@ -51,7 +59,7 @@ spec.dist <- symbiota(taxon = "Physonota alutacea", db = "symbneotropentomology"
 ## Neotropical Flora
 spec.dist <- symbiota(taxon = "Macfadyena unguis-cati", db = "symbneotropplants")
 ## Monarch (California Academy of Sciences)
-spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch")
+spec.dist <- symbiota(taxon = "Canis lupus", db = "Monarch", wait = 4)
 ## The Lundell Plant Diversity Portal
 spec.dist <- symbiota(taxon = "Xanthisma gracile", db = "Lundell") ## not supported, no table
 ## Virtual Flora of Wisconsin
@@ -67,7 +75,7 @@ spec.dist <- symbiota(taxon = "Begonia hirtella", db = "Pacific") ## error
 ## Documenting Ethnobiology in Mexico and Central America
 spec.dist <- symbiota(taxon = "Salvia longispicata", db = "demca") ## error
 ## OpenZooMuseu
-spec.dist <- symbiota(taxon = "Micronisus gabar", db = "symbzoo")
+spec.dist <- symbiota(taxon = "Accipitridae", db = "symbzoo", wait = 6, taxon_type = 4)
 ## Mid-Atlantic Herbaria Consortium
 spec.dist <- symbiota(taxon = "Viburnum dentatum", db = "midatlanticherbaria")
 ## Channel Islands Biodiversity Information System
@@ -75,7 +83,7 @@ spec.dist <- symbiota(taxon = "Heliotropium curassavicum", db = "CAL-IBIS")
 ## Consortium of Small Vertebrate Collections (CSVColl)
 spec.dist <- symbiota(taxon = "Taxidea taxus", db = "CSVColl")
 ## The University of New Hampshire Collection of Insects and Other Arthropods
-spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server") ## error
+spec.dist <- symbiota(taxon = "Bombus borealis", db = "UNH server", wait = 6) ## error
 
 
 x <- spec.dist

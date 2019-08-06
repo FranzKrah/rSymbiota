@@ -14,15 +14,26 @@ The rSymbiota R package is an interface to the content stored within the Symbiot
 ## Install rSymbiota
 ```{r setup, include=TRUE, eval=FALSE}
 
+## Either via CRAN
+install.packages("rSymbiota")
+
+## Or via GitHub for the latest version
 install.packages("devtools")
 devtools::install_github("FranzKrah/rSymbiota")
 
 ```
 
-### Docker
+## Install Docker
 
-Before we start using rSymbiota, we need to install docker (https://docs.docker.com/install/). Docker performs  virtualization, also known as "containerization". rSymbiota interally uses the R package RSelenium to create a Selenium Server from which the Symbiota data portal website is addressed. 
-Docker needs to run before using the rSymbiota package.
+To use rMyCoPortal using Docker, you need to install Docker first.
+Docker performs  virtualization, also known as "containerization". rSymbiota internally uses the R package RSelenium to create a Selenium Server from which the Symbiota portal websites is addressed. 
+Docker needs to run before using the rSymbiota.
+
+* If you work on Mac OS X, this is done with a DMG file that can be downloaded from [here](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac).
+* If you work on Windows, you can download the executable file from [here](https://docs.docker.com/docker-for-windows/install/)
+* If you work on Linux, check [this](https://docs.docker.com/engine/installation/).
+
+Once Docker has been installed you need to start Docker and let it run in the background. You can now use rSymbiota without further notice of Docker.
 
 ## Load the package 
 ```{r example1, include=TRUE, eval=TRUE, echo=TRUE}
@@ -47,9 +58,11 @@ Amanita is a fungus and thus we will select the MyCoPortal:
 ## Download records
 am.rec <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
 am.rec
+## The retrieved S4 class object stores a distribution table with 10224 records (Date: 2019-07-04).
 
-## The retrieved object stores a distribution table with 6570 records.
-head(am.rec@records)
+## And this will give the actual records table downloaded from MyCoPortal:
+recordsTable(am.rec)
+head(recordsTable(am.rec))
 ```
 
 ## Visualization
@@ -60,24 +73,25 @@ We can now use several plotting methods to visualize the data.
 x <- am.rec
 
 ## plot_distmap can be used to plot interactive and static distribution maps
-plot_distmap(x = x, mapdatabase = "world") # the default is interactive
+plot_distmap(x = x, mapdatabase = "world", interactive = TRUE) # the default is interactive
 plot_distmap(x = x, mapdatabase = "world", interactive = FALSE) # the default is interactive
 
 ## plot_recordstreemap can be used to visualize relative importance of aspects of the data
 plot_recordstreemap(x = x, groupvar = "country", log = FALSE) # e.g., the country distribution
 
 ## plot_datamap can be used to get a quick overview of which countries are most records rich
-plot_datamap(x = x, mapdatabase = "world")
+plot_datamap(x = x, mapdatabase = "world", index = "rec")
+# surprisingly a lot of records are there for Australia 
 
 ## the same but cropped to Europe
-plot_datamap(x = x, mapdatabase = "world",
+plot_datamap(x = x, mapdatabase = "world", index = "rec",
              area = list(min_long = -10, max_long = 30, min_lat = 30, max_lat = 70))
 
 
 ```
 
 ## Application
-We could now use the data to look at the range of suitable climatic conditions for A. muscaria. Let's use mean annual temperature and mean annual precipitation for now. 
+We could now use the data to look at the range of suitable climatic conditions for *A. muscaria*. Let's use mean annual temperature and mean annual precipitation for now. 
 
 ```{r clim, include=TRUE, eval=TRUE, echo=TRUE}
 library(sf)
@@ -114,7 +128,7 @@ p.map <- ggplot(dat, aes(x = bio12)) +
   geom_histogram() +
   labs(x ="Mean annual precipitation sums", y = "Count") +
   theme_bw() +
-  geom_vline(aes(xintercept = mean(bio12, na.rm = TRUE)), col='red',size=2)
+  geom_vline(aes(xintercept = median(bio12, na.rm = TRUE)), col='red',size=2)
 
 
 library(cowplot )
@@ -123,7 +137,7 @@ plot_grid(p.mat, p.map, ncol = 2)
 ```
 
 ## Caveats
-We encountered that portals table output renders coordinate information unreadable. We are in contact with the Symbiota portal maintainers to fix this issue. We, however, think this affects only small parts of the data avaiable via the portals. 
+We encountered that the table output of some portals truncates the coordinates text. We are in contact with the Symbiota portal maintainers to fix this issue. We, however, think this affects only small parts of the data avaiable via the portals. If only rough coordinates are needed we recommend filling the gaps with Gazeter data.
 
 
 ## Meta

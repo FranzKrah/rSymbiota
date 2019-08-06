@@ -12,6 +12,11 @@ portal(db = "lichen")
 \description{
 Find URL for portal db
 }
+\examples{
+\dontrun{
+portal(db = "lichen")
+}
+}
 \author{
 Franz-Sebastian Krah
 }

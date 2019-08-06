@@ -8,11 +8,14 @@
 #' @import treemap
 #' @importFrom Hmisc capitalize
 #'
+#' @details Makes use of R package 'treemap'
+#'
 #' @author Franz-Sebastian Krah
 #'
 #' @examples
 #' \dontrun{
-#' am.dist <- mycoportal(taxon = "Amanita muscaria")
+#' am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+#' head(recordsTable(am.dist))
 #' plot_recordstreemap(am.dist, log = FALSE)
 #' }
 #' @export

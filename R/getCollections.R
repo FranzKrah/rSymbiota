@@ -7,6 +7,11 @@
 #'
 #' @importFrom XML xpathSApply htmlParse
 #' @importFrom methods as
+#' @importFrom xml2 read_html
+#' @examples
+#' \dontrun{
+#' getCollections(db = "SCAN")
+#' }
 #' @export
 
 getCollections <- function(db){
@@ -16,10 +21,10 @@ getCollections <- function(db){
 
   if(nrow(ports)>1){
     rownames(ports) <- NULL
-    cat(red("More than 1 portal found, please specify the number\n"))
+    message(red("More than 1 portal found, please specify the number\n"))
     print(ports[,1, drop = FALSE])
     Sys.sleep(0.5)
-    cat("Please enter a row number:")
+    message("Please enter a row number:")
     ent <- scan(file = "", what = "", nmax = 1)
     ports <- ports[ent,]
   }
@@ -31,9 +36,11 @@ getCollections <- function(db){
     stop("This portals doesn't have collections.")
   }
 
-  coll <- htmlParse(portal.url)
+  y <- read_html(portal.url)
+  coll <- htmlParse(y)
 
   ## xPath to collection names
+
   coll2 <- xpathSApply(coll, "//*[@id='specobsdiv']//form//div[2]//table/..//a")
   coll3 <- xpathSApply(coll, "//*[@id='specobsdiv']//form//div[3]//table/..//a")
   coll <- c(coll2, coll3)

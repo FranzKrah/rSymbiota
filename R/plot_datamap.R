@@ -1,6 +1,6 @@
 #' Plot data heatmap on geographic map
 #'
-#' @param x an object of class "\code{records}", see \link{symbiota}
+#' @param x an object of class \code{records}, see \link{symbiota}
 #' @param mapdatabase The map database to use in mapping, see \link{plot_distmap}
 #' @param area list with four elements. Currently \code{mapdatabase} does not contain areas such as Europe,
 #' however, this may be manually chosen like this:
@@ -13,24 +13,25 @@
 #' @references Gazetter: https://www.census.gov/geo/maps-data/data/gazetteer2017.html
 #' @importFrom Hmisc capitalize
 #' @importFrom dplyr left_join
-#'
+#' @importFrom utils read.csv
 #' @author Franz-Sebastian Krah
 #'
 #' @examples
 #' \dontrun{
-#' am.dist <- mycoportal(taxon = "Amanita muscaria")
+#' am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+#' head(recordsTable(am.dist))
 #' plot_datamap(am.dist, mapdatabase = "state")
 #' }
 #' @export
 
 
 plot_datamap <- function(x,
-           mapdatabase = "world",
-           area = NULL,
-           index = "rich",
-           plot = TRUE,
-           trans = "log10",
-           gazetter = TRUE) {
+                         mapdatabase = "world",
+                         area = NULL,
+                         index = "rich",
+                         plot = TRUE,
+                         trans = "log10",
+                         gazetter = TRUE) {
 
   ipt <- x@records
 
@@ -60,10 +61,10 @@ plot_datamap <- function(x,
   ## Calculate number of records for each country or state
   if(index == "rich"){
     if(mapdatabase == "world"){
-    ipt <- data.frame(nr.spec = tapply(ipt$Scientific.Name, ipt$Country, function(x) length(unique(x))))
+      ipt <- data.frame(nr.spec = tapply(ipt$species, ipt$Country, function(x) length(unique(x))))
     }
     if(mapdatabase %in% c("state", "usa")){
-      ipt <- data.frame(nr.spec = tapply(ipt$Scientific.Name, ipt$State.Province, function(x) length(unique(x))))
+      ipt <- data.frame(nr.spec = tapply(ipt$species, ipt$State.Province, function(x) length(unique(x))))
     }
     ipt <- data.frame(rownames(ipt), ipt)
     rownames(ipt) <- NULL
@@ -84,8 +85,9 @@ plot_datamap <- function(x,
     ipt$Destination <- tolower(ipt$Destination)
 
 
-  ipt <- data.frame(rbind(ipt,
-  cbind(Destination = setdiff(unique(world_map$region), unique(ipt$Destination)), Count = NA)))
+  # ipt <- data.frame(rbind(ipt,
+  #                         cbind(Destination = setdiff(unique(world_map$region), unique(ipt$Destination)),
+  #                               Count = NA)))
 
   ## Add coordinates
   ipt <- left_join(ipt, world_map, by = c("Destination" = "region"))
@@ -100,7 +102,6 @@ plot_datamap <- function(x,
   l.scale <- seq(l.scale[1], l.scale[2], 1)
 
   ## Plot
-
   p <- ggplot(ipt, aes(x = ipt$long, y = ipt$lat, group = ipt$group))+
     geom_polygon(aes(fill = ipt$Count), color = "gray65") +
     scale_fill_gradientn(colours =c("lightgray", "yellow", "red"),

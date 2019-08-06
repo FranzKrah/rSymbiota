@@ -3,8 +3,12 @@
 \docType{class}
 \name{records-class}
 \alias{records-class}
-\title{An S4 Class to represent query result from the function \link{symbiota}}
+\title{"records" class
+An S4 Class to represent query result from the function \link{symbiota}
+\code{records} holds a records table together with the query meta data and recommended citation}
 \description{
+"records" class
+An S4 Class to represent query result from the function \link{symbiota}
 \code{records} holds a records table together with the query meta data and recommended citation
 }
 \section{Slots}{
@@ -21,8 +25,8 @@
 \item{\code{db}}{A character string specifying the database}
 }}
 
-\seealso{
-\code{"\link[=records-class]{records}"}
+\examples{
+showClass("records")
 }
 \author{
 Franz-Sebastian Krah

@@ -15,6 +15,11 @@ List of available collections
 \details{
 Get list of available collections from the MyCoPortal. For details also see \url{http://mycoportal.org/portal/collections/index.php}
 }
+\examples{
+\dontrun{
+getCollections(db = "SCAN")
+}
+}
 \author{
 Franz-Sebastian Krah
 }

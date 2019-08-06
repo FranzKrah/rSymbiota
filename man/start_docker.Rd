@@ -9,11 +9,20 @@ start_docker(verbose = TRUE, wait = 2)
 \arguments{
 \item{verbose}{logical}
 
-\item{wait}{waiting time for system call to finish}
+\item{wait}{Waiting time for system call to finish}
 }
 \description{
 Start Docker
 }
 \details{
-This should run for Unix platforms (e.g., Mac) and Windows. Docker available for download at: https://www.docker.com
+Docker available for download at: https://www.docker.com
+}
+\examples{
+\dontrun{
+## Usually these functions are only used internally.
+## However, if there are errors in the function leading to problems running 'symbiota' again
+## it might be neccessary to stop_docker.
+start_docker() # starts docker
+stop_docker() # stops docker
+}
 }

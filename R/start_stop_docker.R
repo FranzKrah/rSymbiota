@@ -1,12 +1,17 @@
 #' Start Docker
 #' @param verbose logical
-#' @param wait waiting time for system call to finish
+#' @param wait Waiting time for system call to finish
 #' @import sys
-#' @details This should run for Unix platforms (e.g., Mac) and Windows. Docker available for download at: https://www.docker.com
+#' @details Docker available for download at: https://www.docker.com
+#' @examples
+#' \dontrun{
+#' ## Usually these functions are only used internally.
+#' ## However, if there are errors in the function leading to problems running 'symbiota' again
+#' ## it might be neccessary to stop_docker.
+#' start_docker() # starts docker
+#' stop_docker() # stops docker
+#' }
 #' @export
-#'
-#'
-
 
 start_docker <- function(verbose = TRUE, wait = 2){
 
@@ -28,7 +33,7 @@ start_docker <- function(verbose = TRUE, wait = 2){
   if(out != 0){
     if(err.le == 1 & noerr == 1)
     {
-      cat("Port is allocated\n")
+      message("Port is allocated\n")
     }else{
       stop("Error")
     }

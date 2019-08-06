@@ -2,7 +2,7 @@
 % Please edit documentation in R/records.R
 \name{records}
 \alias{records}
-\title{Create Objects of Class "records"}
+\title{Create a records objects}
 \usage{
 records(nr.records, citation, query, records, db)
 }
@@ -15,12 +15,15 @@ records(nr.records, citation, query, records, db)
 
 \item{records}{A data.frame with the query records results}
 
-\item{db}{A character string specifying the database (currently only MyCoPortal)}
+\item{db}{A character string specifying the database}
 }
 \description{
-Create objects of class
-  \code{"\link[=records-class]{records}"} from meta data
-  and a data.frame derived from \code{\link{symbiota}}.
+Create a records objects
+}
+\examples{
+\dontrun{
+help("records-class")
+}
 }
 \author{
 Franz-Sebastian Krah

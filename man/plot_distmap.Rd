@@ -41,7 +41,8 @@ Plot distribution data on map
 }
 \examples{
 \dontrun{
-am.dist <- mycoportal(taxon = "Amanita muscaria")
+am.dist <- symbiota(taxon = "Amanita muscaria", db = "MyCoPortal")
+head(recordsTable(am.dist))
 plot_distmap(am.dist, mapdatabase = "state", interactive = TRUE)
 plot_distmap(am.dist, mapdatabase = "state", interactive = FALSE)
 }
